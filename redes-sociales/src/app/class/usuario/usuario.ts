@@ -73,7 +73,7 @@ export class Usuario {
         this.password = password;
     }
 
-    setDescripcion(descripcion): void {
-        this.descripcion = descripcion
+    setDescripcion(descripcion: string): void {
+        this.descripcion = descripcion;
     }
 }
