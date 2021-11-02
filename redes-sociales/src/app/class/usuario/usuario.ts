@@ -1,14 +1,16 @@
+import * as bcrypt from 'bcryptjs';
+
 export class Usuario {
     nombre: string;
     apellidos: string;
     correo: string;
     edad: number;
-    avatar: File;
+    avatar: string;
     password: string;
     descripcion: string;
     
     /* CONSTRUCTOR */
-    constructor(nombre: string, apellidos: string, correo: string, edad: number, avatar: File, password: string, descripcion: string){
+    constructor(nombre: string, apellidos: string, correo: string, edad: number, avatar: string, password: string, descripcion: string){
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
@@ -35,7 +37,7 @@ export class Usuario {
         return this.edad;
     }
 
-    getAvatar(): File {
+    getAvatar(): string {
         return this.avatar;
     }
 
@@ -65,7 +67,7 @@ export class Usuario {
         this.edad = edad;
     }
 
-    setAvatar(avatar: File): void {
+    setAvatar(avatar: string): void {
         this.avatar = avatar;
     }
 
@@ -75,5 +77,15 @@ export class Usuario {
 
     setDescripcion(descripcion: string): void {
         this.descripcion = descripcion;
+    }
+
+    /* MÉTODOS */
+    encriptarPassword() {
+        let passEncriptada = bcrypt.hashSync(this.password, 10)
+        this.setPassword(passEncriptada);
+    }
+
+    compararPassword(password: string): boolean {
+        return bcrypt.compareSync(password, this.getPassword());
     }
 }
