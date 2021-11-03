@@ -2,7 +2,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
+:root {
+    --dark: #212529;
+    --dark-hover: #4e4e4e;
+    --dark-low: #949393;
+    --color: #0dcaf0;
+    --color-hover: #0a6679;
+    --b: #fff;
+}
+
 *, html, body {
     font-family: 'Montserrat', sans-serif;
 }
 
+#contenedor-login {
+    margin-top: 10rem;
+}
+
+.form-control:focus {
+    color: var(--color);
+    background-color: var(--color);
+    border-color: var(--dark-low);
+    box-shadow: 0 0 0 0.25rem var(--dark-hover);
+    outline: 0;
+}
