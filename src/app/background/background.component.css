@@ -19,7 +19,8 @@
     left: 0;
     margin: 0;
     padding: 0;
-    background: #212529;
+    background: rgb(97,97,97);
+    background: linear-gradient(360deg, rgba(97,97,97,1) 28%, #212529 100%);
     overflow: hidden;
 }
 
@@ -29,12 +30,9 @@
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(255, 255, 255, 0.2);
+    background: #0dcaf042;
     animation: animate 19s linear infinite;
 }
-
-
-
 
 .background li:nth-child(0) {
     left: 36%;
