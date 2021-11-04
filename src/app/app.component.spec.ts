@@ -18,16 +18,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'redes-sociales'`, () => {
+  it(`should have as title 'RSOCIAL'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app).toEqual('redes-sociales');
+    expect(app).toEqual('RSOCIAL');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('redes-sociales app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('RSOCIAL app is running!');
   });
 });
