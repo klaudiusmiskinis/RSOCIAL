@@ -18,7 +18,7 @@
 }
 
 #contenedor-login {
-    margin-top: 10rem;
+    margin-top: 9rem;
 }
 
 .border-color {
@@ -57,7 +57,7 @@
 .form-control {
     transition: .15s ease-in-out,box-shadow .15s ease-in-out;
     border-color: transparent;
-    background-color: var(--col);
+    background-color: var(--b);
 }
 
 .form-control:focus {
