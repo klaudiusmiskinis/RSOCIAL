@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "redes-sociales": {
+    "RSOCIAL": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/redes-sociales",
+            "outputPath": "dist/RSOCIAL",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "redes-sociales:build:production"
+              "browserTarget": "RSOCIAL:build:production"
             },
             "development": {
-              "browserTarget": "redes-sociales:build:development"
+              "browserTarget": "RSOCIAL:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "redes-sociales:build"
+            "browserTarget": "RSOCIAL:build"
           }
         },
         "test": {
@@ -112,5 +112,5 @@
       }
     }
   },
-  "defaultProject": "redes-sociales"
+  "defaultProject": "RSOCIAL"
 }
