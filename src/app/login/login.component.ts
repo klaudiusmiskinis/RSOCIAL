@@ -10,11 +10,11 @@ export class LoginComponent {
   email: string;
   password: string;
 
-  constructor() {}
+  constructor() {};
 
   login() {
     console.log(this.email);
     console.log(this.password);
-  }
-}
+  };
+};
 
