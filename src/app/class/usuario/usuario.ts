@@ -8,9 +8,10 @@ export class Usuario {
     avatar: string;
     password: string;
     descripcion: string;
+    rol: string;
     
     /* CONSTRUCTOR */
-    constructor(nombre: string, apellidos: string, correo: string, edad: number, avatar: string, password: string, descripcion: string){
+    constructor(nombre: string, apellidos: string, correo: string, edad: number, avatar: string, password: string, descripcion: string, rol: string){
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
@@ -18,37 +19,41 @@ export class Usuario {
         this.avatar = avatar;
         this.password = password;
         this.descripcion = descripcion;
-    }
+        this.rol = rol
+    };
 
     /* GETTERs */
     getNombre(): string {
         return this.nombre;
-    }
+    };
 
     getApellidos(): string {
         return this.apellidos;
-    }
+    };
     
     getCorreo(): string {
         return this.correo;
-    }
+    };
 
     getEdad(): number {
         return this.edad;
-    }
+    };
 
     getAvatar(): string {
         return this.avatar;
-    }
+    };
 
     getPassword(): string {
         return this.password;
-    }
+    };
 
     getDescripcion(): string {
         return this.descripcion;
-    }
+    };
 
+    geRol(): string {
+        return this.rol;
+    };
 
     /* SETTERs */
     setNombre(nombre: string): void {
@@ -77,6 +82,10 @@ export class Usuario {
 
     setDescripcion(descripcion: string): void {
         this.descripcion = descripcion;
+    }
+
+    setRol(rol: string): void {
+        this.rol = rol;
     }
 
     /* MÉTODOS */
