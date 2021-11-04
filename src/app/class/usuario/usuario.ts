@@ -81,8 +81,7 @@ export class Usuario {
 
     /* MÉTODOS */
     encriptarPassword() {
-        let passEncriptada = bcrypt.hashSync(this.password, 10)
-        this.setPassword(passEncriptada);
+        this.setPassword(bcrypt.hashSync(this.password, 10));
     }
 
     compararPassword(password: string): boolean {
