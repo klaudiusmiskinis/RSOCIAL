@@ -55,12 +55,24 @@
 }
 
 .form-control {
-    transition: .15s ease-in-out,box-shadow .15s ease-in-out;
     border-color: transparent;
     background-color: var(--b);
+    transition: .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .form-control:focus {
     border-color: var(--col);
+    transition: .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.link-color {
+    cursor: pointer;
+    color: var(--col) !important;
+    transition: .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.link-color:hover {
+    cursor: pointer;
+    color: var(--col-hover) !important;
     transition: .15s ease-in-out,box-shadow .15s ease-in-out;
 }
