@@ -121,35 +121,3 @@
     bottom: -126px;
     animation-delay: 43s;
 }
-
-.background li:nth-child(11) {
-    left: 73%;
-    width: 3px;
-    height: 3px;
-    bottom: -3px;
-    animation-delay: 46s;
-}
-
-.background li:nth-child(12) {
-    left: 6%;
-    width: 160px;
-    height: 160px;
-    bottom: -160px;
-    animation-delay: 42s;
-}
-
-.background li:nth-child(13) {
-    left: 77%;
-    width: 24px;
-    height: 24px;
-    bottom: -24px;
-    animation-delay: 16s;
-}
-
-.background li:nth-child(14) {
-    left: 18%;
-    width: 147px;
-    height: 147px;
-    bottom: -147px;
-    animation-delay: 14s;
-}
