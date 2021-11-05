@@ -3,14 +3,14 @@
     <div class='row justify-content-center' id='contenedor-login'>
         <div class='col-lg-4'>
             <div class='text-center'>
-                <div class='card bg-dark shadow m-3 p-5 justify-content-center' action='login_ok.php' method='POST'>
+                <form class='card bg-dark shadow m-3 p-5 justify-content-center' [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
                     <h1 class='text-color'>RSOCIAL</h1>
                     <p class='text-color' id='frase-login'>¡Bienvenido,  entra!</p>
                     <input 
                         class='shadow-sm form-control' 
                         type='text' 
-                        name='username' 
-                        [(ngModel)]='email'
+                        name='username'
+                        formControlName="username"
                         placeholder='Username o email' 
                         autocomplete='off' 
                         required
@@ -19,16 +19,20 @@
                         class='mt-2 shadow-sm form-control' 
                         type='password'
                         name='password'
-                        [(ngModel)]='password'
+                        formControlName='password'
                         placeholder='Contraseña' 
                         autocomplete='off' 
                         required
                     />
-                    <button class='mt-3 shadow-sm text-center btn btn-outline-color' type='submit' (click)="login()">Iniciar sesión</button>
+                    <button 
+                        class='mt-3 shadow-sm text-center btn btn-outline-color' 
+                        type='submit'>
+                        Iniciar sesión
+                    </button>
                     <small class='mt-2'>
                         <a routerLink="/register" class='link-color'>Registrarse</a>
                     </small>
-                </div>
+                </form>
             </div>
         </div>
     </div>
