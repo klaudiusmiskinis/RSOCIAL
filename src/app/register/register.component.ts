@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -9,24 +8,24 @@ import { Router } from '@angular/router';
 })
 
 export class RegisterComponent {
-    registerForm: FormGroup;
-    loading = false;
-    submitted = false;
+  username: string;
+  email: string;
+  password: string;
+  registerForm: FormGroup;
 
-    constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor() {};
 
-  ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+  crearFormulario() {
+    this.registerForm = new FormGroup({
+      username: new FormControl(),
+      email: new FormControl(),
+      password: new FormControl()
     });
-    console.log(this.registerForm);
   }
 
-
-  register(){
-    
+  register() {
+    console.log(this.username);
+    console.log(this.email);
+    console.log(this.password);
   };
-
 };
