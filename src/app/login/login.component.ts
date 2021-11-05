@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit{
 }
 
   loginSubmit() {
-    console.log(this.loginForm.get('username'), this.loginForm.get('password'))
+    console.log(this.loginForm.get('username'), this.loginForm.get('password'));
     this.loginForm = new FormGroup({
       username: new FormControl(),
       password: new FormControl(),
