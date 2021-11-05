@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ControlContainer, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
