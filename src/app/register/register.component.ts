@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -11,8 +12,30 @@ export class RegisterComponent {
   validado: boolean = false;
   error = {
     texto: '',
-    clase: ''
-  };
+    class: ''
+  }
+
+  checkCross = {
+    username: {
+      texto: '',
+      class: ''
+    },
+    email: {
+      texto: '',
+      class: ''
+    },
+    password: {
+      texto: '',
+      class: ''
+    },
+    passwordRepetir: {
+      texto: '',
+      class: ''
+    }
+  }
+
+  deshabilitado: 'disabled';
+
 
   constructor(private formBuilder: FormBuilder) {};
 
@@ -38,10 +61,10 @@ export class RegisterComponent {
   llamarError(tipo, textoError) {
     if (tipo) {
       this.error.texto = textoError;
-      this.error.clase = 'mt-2 p-2 bg-success text-black rounded';
+      this.error.class = 'mt-2 p-2 bg-success text-black rounded';
     } else {
       this.error.texto = textoError;
-      this.error.clase = 'mt-2 p-2 bg-danger text-black rounded';
+      this.error.class = 'mt-2 p-2 bg-danger text-black rounded';
     }
   }
 
@@ -50,11 +73,17 @@ export class RegisterComponent {
     if (valor.length > 3) {
       if(this.comprobarUsername(valor)) {
         this.llamarError(true, 'El username es válido');
+        this.checkCross.username.texto = '✓',
+        this.checkCross.username.class = 'bg-success'
       } else {
         this.llamarError(false, 'El username es inválido');
+        this.checkCross.username.texto = '✗',
+        this.checkCross.username.class = 'bg-danger'
       }
     } else {
       this.llamarError(false, 'El username es demasiado corto');
+      this.checkCross.username.texto = '✗',
+      this.checkCross.username.class = 'bg-danger'
     }
   }
 
@@ -62,8 +91,12 @@ export class RegisterComponent {
     let valor = this.registerForm.value.email
       if(this.comprobarEmail(valor)) {
         this.llamarError(true, 'El email es válido');
+        this.checkCross.email.texto = '✓',
+        this.checkCross.email.class = 'bg-success'
       } else {
         this.llamarError(false, 'El email es inválido');
+        this.checkCross.email.texto = '✗',
+        this.checkCross.email.class = 'bg-danger'
       }
   }
 
@@ -73,11 +106,33 @@ export class RegisterComponent {
     if(valor.length > 3) {
       if (valor === password) {
         this.llamarError(true, 'Las contraseñas coinciden');
+        this.checkCross.password.texto = '✓',
+        this.checkCross.password.class = 'bg-success'
+        this.checkCross.passwordRepetir.texto = '✓',
+        this.checkCross.passwordRepetir.class = 'bg-success'
       } else {
         this.llamarError(false, 'Las contraseñas no coinciden');
+        this.checkCross.password.texto = '✗',
+        this.checkCross.password.class = 'bg-danger'
+        this.checkCross.passwordRepetir.texto = '✗',
+        this.checkCross.passwordRepetir.class = 'bg-danger'
       }
     } else {
       this.llamarError(false, 'Las contraseñas no coinciden');
+      this.checkCross.password.texto = '✗',
+      this.checkCross.password.class = 'bg-danger'
+      this.checkCross.passwordRepetir.texto = '✗',
+      this.checkCross.passwordRepetir.class = 'bg-danger'
     }
+  }
+
+  registerSubmit() {
+    console.log(this.registerForm.get('username'), this.registerForm.get('password'));
+    this.registerForm = new FormGroup({
+        username: new FormControl(),
+        email: new FormControl(),
+        password: new FormControl(),
+        passwordRepetir: new FormControl()
+    });
   }
 }
