@@ -1,53 +1,65 @@
 <title>Register</title>
 <div class='container-fluid mx-auto'>
     <div class='row justify-content-center' id='contenedor-login'>
-        <div class='col-md-6'>
+        <div class='col-lg-5'>
             <div class='text-center'>
                 <form class='card bg-dark shadow m-3 p-5 justify-content-center' [formGroup]="registerForm" novalidate>
                     <h1 class='text-color'>RSOCIAL</h1>
                     <p class='text-color' id='frase-login'>¡Create una cuenta!</p>
-                    <input 
-                        class='shadow-sm form-control' 
-                        type='text'
-                        name='username'
-                        formControlName='username'
-                        placeholder='Username' 
-                        autocomplete='off'
-                        (input)='validacionUsername()'
-                    />
-                    <input 
-                        class='mt-2 shadow-sm form-control' 
-                        type='email' 
-                        name='email' 
-                        formControlName='email'
-                        placeholder='Email' 
-                        autocomplete='off'
-                        (input)='validacionEmail()'
-                    />
-                    <input 
-                        class='mt-2 shadow-sm form-control'
-                        type='password' 
-                        name='password'
-                        formControlName='password'
-                        placeholder='Password' 
-                        autocomplete='off' 
-                        (input)='validacionPassword()'
-                    />
-                    <input 
-                        class='mt-2 shadow-sm form-control'
-                        type='password' 
-                        name='passwordRepetir'
-                        formControlName='passwordRepetir'
-                        placeholder='Repetir password'
-                        autocomplete='off' 
-                        (input)='validacionPasswordRepetir()'
-                    />
 
-                    <p id="error" *ngIf='error' class="{{ error.clase }}">{{ error.texto }}</p>
+                    <div class="input-group mt-2">
+                        <input 
+                            class='shadow-sm form-control' 
+                            type='text'
+                            name='username'
+                            formControlName='username'
+                            placeholder='Username' 
+                            autocomplete='off'
+                            (input)='validacionUsername()'
+                        />
+                    </div>
+
+                    <div class="input-group mt-2">
+                        <input 
+                            class='shadow-sm form-control' 
+                            type='email' 
+                            name='email' 
+                            formControlName='email'
+                            placeholder='Email' 
+                            autocomplete='off'
+                            (input)='validacionEmail()'
+                        />
+                    </div>
+
+                    <div class="input-group mt-2">
+                        <input
+                            class='shadow-sm form-control'
+                            type='password' 
+                            name='password'
+                            formControlName='password'
+                            placeholder='Password' 
+                            autocomplete='off' 
+                            (input)='validacionPassword()'
+                        />
+                    </div>
+
+                    <div class="input-group mt-2">
+                        <input 
+                            class='shadow-sm form-control'
+                            type='password' 
+                            name='passwordRepetir'
+                            formControlName='passwordRepetir'
+                            placeholder='Repetir password'
+                            autocomplete='off' 
+                            (input)='validacionPassword()'
+                        />
+                    </div>                        
+
+                    <p *ngIf='error' class="{{ error.clase }}">{{ error.texto }}</p>
 
                     <button class='mt-2 shadow-sm text-center btn btn-outline-color' type='submit'>Registrarse</button>
-                    <small class='mt-1'>
-                        <a routerLink="/login" class='link-color'>Iniciar sesión</a>
+                    <small class='mt-2'>
+                        <p class='text-color'>¿Ya tienes una cuenta? <a routerLink="/login" class='link-color'>Iniciar sesión</a></p>
                     </small>
                 </form>
             </div>
