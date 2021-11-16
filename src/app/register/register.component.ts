@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { CheckCross } from '../class/usuario/checkCross';
 
 @Component({
   selector: 'app-register',
@@ -10,36 +11,17 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegisterComponent {
   registerForm: FormGroup;
   validado: boolean = false;
+  checkCross: CheckCross = new CheckCross();
+  deshabilitado: string = "mt-2 shadow-sm text-center btn btn-outline-color disabled";
+
   error = {
     texto: '',
     class: ''
   }
 
-  checkCross = {
-    username: {
-      texto: '',
-      class: ''
-    },
-    email: {
-      texto: '',
-      class: ''
-    },
-    password: {
-      texto: '',
-      class: ''
-    },
-    passwordRepetir: {
-      texto: '',
-      class: ''
-    }
-  }
-
-  deshabilitado: 'disabled';
-
-
   constructor(private formBuilder: FormBuilder) {};
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
         username: ['', Validators.required],
         email: ['', Validators.required],
@@ -48,6 +30,15 @@ export class RegisterComponent {
     });
   }
 
+  allVerified(): void {
+    if (this.checkCross.username.texto == '✓' && this.checkCross.email.texto == '✓' && 
+    this.checkCross.password.texto == '✓' && this.checkCross.passwordRepetir.texto == '✓') {
+      this.deshabilitado =  'mt-2 shadow-sm text-center btn btn-outline-color';
+    } else {
+      this.deshabilitado = 'mt-2 shadow-sm text-center btn btn-outline-color disabled';
+    }
+  }
+  
   comprobarEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
@@ -66,6 +57,7 @@ export class RegisterComponent {
       this.error.texto = textoError;
       this.error.class = 'mt-2 p-2 bg-danger text-black rounded';
     }
+    this.allVerified();
   }
 
   validacionUsername() {
@@ -73,31 +65,28 @@ export class RegisterComponent {
     if (valor.length > 3) {
       if(this.comprobarUsername(valor)) {
         this.llamarError(true, 'El username es válido');
-        this.checkCross.username.texto = '✓',
-        this.checkCross.username.class = 'bg-success'
+        this.checkCross.usernameOk();
       } else {
         this.llamarError(false, 'El username es inválido');
-        this.checkCross.username.texto = '✗',
-        this.checkCross.username.class = 'bg-danger'
+        this.checkCross.usernameNot();
       }
     } else {
       this.llamarError(false, 'El username es demasiado corto');
-      this.checkCross.username.texto = '✗',
-      this.checkCross.username.class = 'bg-danger'
+      this.checkCross.usernameNot();
     }
+    this.allVerified();
   }
 
   validacionEmail() {
     let valor = this.registerForm.value.email
       if(this.comprobarEmail(valor)) {
         this.llamarError(true, 'El email es válido');
-        this.checkCross.email.texto = '✓',
-        this.checkCross.email.class = 'bg-success'
+        this.checkCross.emailOk();
       } else {
         this.llamarError(false, 'El email es inválido');
-        this.checkCross.email.texto = '✗',
-        this.checkCross.email.class = 'bg-danger'
+        this.checkCross.emailNot();
       }
+      this.allVerified();
   }
 
   validacionPassword() {
@@ -106,33 +95,35 @@ export class RegisterComponent {
     if(valor.length > 3) {
       if (valor === password) {
         this.llamarError(true, 'Las contraseñas coinciden');
-        this.checkCross.password.texto = '✓',
-        this.checkCross.password.class = 'bg-success'
-        this.checkCross.passwordRepetir.texto = '✓',
-        this.checkCross.passwordRepetir.class = 'bg-success'
+        this.checkCross.passwordOk();
+        this.checkCross.passwordRepetirOk();
       } else {
         this.llamarError(false, 'Las contraseñas no coinciden');
-        this.checkCross.password.texto = '✗',
-        this.checkCross.password.class = 'bg-danger'
-        this.checkCross.passwordRepetir.texto = '✗',
-        this.checkCross.passwordRepetir.class = 'bg-danger'
+        this.checkCross.passwordNot();
+        this.checkCross.passwordRepetirNot();
       }
     } else {
       this.llamarError(false, 'Las contraseñas no coinciden');
-      this.checkCross.password.texto = '✗',
-      this.checkCross.password.class = 'bg-danger'
-      this.checkCross.passwordRepetir.texto = '✗',
-      this.checkCross.passwordRepetir.class = 'bg-danger'
+      this.checkCross.passwordNot();
+      this.checkCross.passwordRepetirNot();
     }
+    this.allVerified();
   }
 
   registerSubmit() {
-    console.log(this.registerForm.get('username'), this.registerForm.get('password'));
+    let data = {
+      username: this.registerForm.get('username')?.value,
+      email: this.registerForm.get('email')?.value,
+      password: this.registerForm.get('password')?.value,
+      passwordRepetir: this.registerForm.get('passwordRepetir')?.value
+    }
+    console.log(data)
     this.registerForm = new FormGroup({
         username: new FormControl(),
         email: new FormControl(),
         password: new FormControl(),
         passwordRepetir: new FormControl()
     });
+    window.location.href = '/login';
   }
 }
