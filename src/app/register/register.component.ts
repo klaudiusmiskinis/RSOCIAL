@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CheckCross } from '../class/usuario/checkCross';
 
@@ -21,6 +21,7 @@ export class RegisterComponent {
 
   constructor(private formBuilder: FormBuilder) {};
 
+  
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
         username: ['', Validators.required],
@@ -107,6 +108,13 @@ export class RegisterComponent {
       this.checkCross.passwordNot();
       this.checkCross.passwordRepetirNot();
     }
+    localStorage.script = JSON.stringify({
+      "HELLO": "Hey, I'm so glad you set EstherBot up!",
+      "I LOVE YOU": "Awh, shucks! I love you too!",
+      "CONNECT ME": "",
+      "DISCONNECT": "Roger that, EstherBot is back."
+    }) ;
+    console.log(localStorage)
     this.allVerified();
   }
 
