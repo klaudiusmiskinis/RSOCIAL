@@ -65,7 +65,7 @@
 
                     <p *ngIf='error' class="{{ error.class }}">{{ error.texto }}</p>
 
-                    <button *ngIf='deshabilitado' class='mt-2 shadow-sm text-center btn btn-outline-color {{ deshabilitado }}' type='submit'>Registrarse</button>
+                    <button *ngIf='deshabilitado' class='{{ deshabilitado }}' type='submit'>Registrarse</button>
                     <small class='mt-2'>
                         <p class='text-color'>¿Ya tienes una cuenta? <a routerLink="/login" class='link-color'>Iniciar sesión</a></p>
                     </small>
