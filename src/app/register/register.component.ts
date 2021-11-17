@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CheckCross } from '../class/usuario/checkCross';
+import { Usuario } from '../class/usuario/usuario';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,10 @@ import { CheckCross } from '../class/usuario/checkCross';
 
 export class RegisterComponent {
   registerForm: FormGroup;
-  validado: boolean = false;
+  router: Router;
+
+  usuario;
+
   checkCross: CheckCross = new CheckCross();
   deshabilitado: string = "mt-2 shadow-sm text-center btn btn-outline-color disabled";
 
@@ -19,7 +24,10 @@ export class RegisterComponent {
     class: ''
   }
 
-  constructor(private formBuilder: FormBuilder) {};
+  constructor(private formBuilder: FormBuilder, router: Router) {
+    this.formBuilder = formBuilder;
+    this.router = router;
+  };
 
   
   ngOnInit(): void {
@@ -108,13 +116,6 @@ export class RegisterComponent {
       this.checkCross.passwordNot();
       this.checkCross.passwordRepetirNot();
     }
-    localStorage.script = JSON.stringify({
-      "HELLO": "Hey, I'm so glad you set EstherBot up!",
-      "I LOVE YOU": "Awh, shucks! I love you too!",
-      "CONNECT ME": "",
-      "DISCONNECT": "Roger that, EstherBot is back."
-    }) ;
-    console.log(localStorage)
     this.allVerified();
   }
 
@@ -125,13 +126,13 @@ export class RegisterComponent {
       password: this.registerForm.get('password')?.value,
       passwordRepetir: this.registerForm.get('passwordRepetir')?.value
     }
-    console.log(data)
     this.registerForm = new FormGroup({
         username: new FormControl(),
         email: new FormControl(),
         password: new FormControl(),
         passwordRepetir: new FormControl()
     });
-    window.location.href = '/login';
+    this.router.navigate(['login', data])
+    console.log(this.router)
   }
 }
