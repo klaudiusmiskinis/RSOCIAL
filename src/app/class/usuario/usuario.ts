@@ -89,11 +89,11 @@ export class Usuario {
     }
 
     /* MÉTODOS */
-    encriptarPassword() {
-        this.setPassword(bcrypt.hashSync(this.password, 10));
+    async encriptarPassword() {
+        return await this.setPassword(bcrypt.hashSync(this.password, 10));
     }
 
-    compararPassword(password: string): boolean {
-        return bcrypt.compareSync(password, this.getPassword());
+    async compararPassword(password: string) {
+       return await bcrypt.compareSync(password, this.getPassword());
     }
 }
