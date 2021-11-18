@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Usuario } from '../class/usuario/usuario';
+import { ActivatedRoute, Router } from '@angular/router';
+import { writeJsonFile } from 'write-json-file';
+import { Usuario } from '../class/usuario';
+import cuentas from '../json/cuentas.json';
+
 
 @Component({
   selector: 'app-login',
@@ -10,30 +13,36 @@ import { Usuario } from '../class/usuario/usuario';
 })
 
 export class LoginComponent implements OnInit {
-  users: Usuario[];
-  parametro;
-  loginForm: FormGroup;
-  activatedRouter: ActivatedRoute;
-  constructor(private formBuilder: FormBuilder, activatedRouter: ActivatedRoute) {
+  public cuentas: Usuario[] = cuentas;
+  public activatedRouter: ActivatedRoute;
+  public loginForm: FormGroup;
+  public usuarios: Usuario[];
+  public router: Router;
+  public usuario;
+
+  constructor(private formBuilder: FormBuilder, router: Router, activatedRouter: ActivatedRoute) {
     this.formBuilder = formBuilder;
     this.activatedRouter = activatedRouter;
+    this.router = router;
+    this.usuarios = [];
   };
 
   ngOnInit() {
+    this.cuentas.forEach(cuenta => {
+      this.usuarios.push(cuenta);
+    })
+    console.log(this.usuarios)
     this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required]
     });
     this.activatedRouter.params.subscribe(usuarioNuevo => {
-      this.parametro = usuarioNuevo;
-    })
-    if (this.parametro.nombre) {
-      console.log(this.parametro)
-      this.parametro = new Usuario(this.parametro.username, this.parametro.username, this.parametro.email, 0, './default.jpg', this.parametro.password, 'texto', 'user');
-      this.parametro.encriptarPassword();
-      console.log(this.parametro)
-    }
-  }
+      this.usuario = usuarioNuevo;
+      this.usuario = new Usuario(this.usuario.username, this.usuario.username, this.usuario.email, 0, './default.jpg', this.usuario.password, 'texto', 'user');
+      this.usuarios.push(this.usuario);
+      this.router.navigate(['/login']);
+    });
+  };
 
   cargarUsuarios() {
 
