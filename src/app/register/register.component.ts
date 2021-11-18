@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CheckCross } from '../class/usuario/checkCross';
-import { Usuario } from '../class/usuario/usuario';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-register',
@@ -119,12 +119,11 @@ export class RegisterComponent {
     this.allVerified();
   }
 
-  registerSubmit() {
+  async registerSubmit() {
     let data = {
       username: this.registerForm.get('username')?.value,
       email: this.registerForm.get('email')?.value,
-      password: this.registerForm.get('password')?.value,
-      passwordRepetir: this.registerForm.get('passwordRepetir')?.value
+      password: await bcrypt.hashSync(this.registerForm.get('password')?.value, 10)
     }
     this.registerForm = new FormGroup({
         username: new FormControl(),
@@ -133,6 +132,5 @@ export class RegisterComponent {
         passwordRepetir: new FormControl()
     });
     this.router.navigate(['login', data])
-    console.log(this.router)
   }
 }
