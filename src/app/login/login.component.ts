@@ -28,9 +28,7 @@ export class LoginComponent implements OnInit {
   };
 
   ngOnInit() {
-    this.cuentas.forEach(cuenta => {
-      this.usuarios.push(cuenta);
-    })
+    this.cargarUsuarios();
     console.log(this.usuarios)
     this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],
@@ -39,13 +37,21 @@ export class LoginComponent implements OnInit {
     this.activatedRouter.params.subscribe(usuarioNuevo => {
       this.usuario = usuarioNuevo;
       this.usuario = new Usuario(this.usuario.username, this.usuario.username, this.usuario.email, 0, './default.jpg', this.usuario.password, 'texto', 'user');
-      this.usuarios.push(this.usuario);
+      if (this.usuario.nombre != undefined) {
+        this.usuarios.push(this.usuario);
+      };
       this.router.navigate(['/login']);
     });
   };
 
   cargarUsuarios() {
+    this.cuentas.forEach(cuenta => {
+      this.usuarios.push(cuenta);
+    })
+  }
 
+  async guardarUsuarios() {
+    await writeJsonFile('../json/cuentas_backup_new.json', {cuentas: this.cuentas});
   }
 
   loginSubmit() {
