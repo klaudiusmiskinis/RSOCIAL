@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CheckCross } from '../class/usuario/checkCross';
+import { CheckCross } from '../class/checkCross';
 import * as bcrypt from 'bcryptjs';
 
 @Component({
@@ -13,9 +13,7 @@ import * as bcrypt from 'bcryptjs';
 export class RegisterComponent {
   registerForm: FormGroup;
   router: Router;
-
   usuario;
-
   checkCross: CheckCross = new CheckCross();
   deshabilitado: string = "mt-2 shadow-sm text-center btn btn-outline-color disabled";
 
