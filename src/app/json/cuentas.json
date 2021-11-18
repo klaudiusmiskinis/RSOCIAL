@@ -1,0 +1,52 @@
+[
+    {
+        "nombre": "Paco",
+        "apellidos": "Mermelada Suave",
+        "correo": "pmermeladasuave@gmail.com",
+        "edad": 30,
+        "avatar": "default.jpg",
+        "password": "$2a$10$J1N64bXEoe6yWxKB4iqQSeUqvArnDe4RM/kphCWKetv3c5qqTip7K",
+        "descripcion": "Me llamo Paco y me encanta el parmesano",
+        "rol": "user"
+    },
+    {
+        "nombre": "Lucía",
+        "apellidos": "González Adobe",
+        "correo": "lgonzalezadobe@gmail.com",
+        "edad": 19,
+        "avatar": "default.jpg",
+        "password": "$2a$10$awV22ItC6b91QVang6bgtOkoO7rb1JR8/q3HX0Tfei5hj1wA2P0T.",
+        "descripcion": "Me llamo Lucía y me encanta el sexo",
+        "rol": "user"
+    },
+    {
+        "nombre": "Marc",
+        "apellidos": "Márquez Alonso",
+        "correo": "mmarquezalonso@gmail.com",
+        "edad": 25,
+        "avatar": "default.jpg",
+        "password": "$2a$10$qA8Cmgrv9AHIsE9RDI3uI.aETU2t1LqMgKvT9u.X3MxkIB0PzJSW.",
+        "descripcion": "Me llamo Marc y me encantan las motos",
+        "rol": "user"
+    },
+    {
+        "nombre": "Klaudijus",
+        "apellidos": "Miskinis",
+        "correo": "klaudiusmiskinis@gmail.com",
+        "edad": 21,
+        "avatar": "default.jpg",
+        "password": "$2a$10$kq13Wg4NQWFPL7meUMja5OBLkVEBG7Fcv8kcJU8XDT.b/7mhbZfZ.",
+        "descripcion": "Me llamo Klaudijus y soy un admin",
+        "rol": "admin"
+    },
+    {
+        "nombre": "Julio",
+        "apellidos": "Valencia Gallego",
+        "correo": "jvalenciagallego@gmail.com",
+        "edad": 27,
+        "avatar": "default.jpg",
+        "password": "$2a$10$48mCNuRMdiHWGw5AXXEi3OPCiYutTdGU9RsxodZJ3bZxSkJGr.QiG",
+        "descripcion": "Me llamo Julio y soy un adicto a la birra",
+        "rol": "user"
+    }
+]
