@@ -9,14 +9,14 @@ import { Usuario } from '../class/usuario/usuario';
   styleUrls: ['../app.component.css']
 })
 
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   users: Usuario[];
+  parametro;
   loginForm: FormGroup;
   activatedRouter: ActivatedRoute;
   constructor(private formBuilder: FormBuilder, activatedRouter: ActivatedRoute) {
     this.formBuilder = formBuilder;
     this.activatedRouter = activatedRouter;
-    this.users = [];
   };
 
   ngOnInit() {
@@ -24,7 +24,19 @@ export class LoginComponent implements OnInit{
         username: ['', Validators.required],
         password: ['', Validators.required]
     });
-    this.activatedRouter;
+    this.activatedRouter.params.subscribe(usuarioNuevo => {
+      this.parametro = usuarioNuevo;
+    })
+    if (this.parametro.nombre) {
+      console.log(this.parametro)
+      this.parametro = new Usuario(this.parametro.username, this.parametro.username, this.parametro.email, 0, './default.jpg', this.parametro.password, 'texto', 'user');
+      this.parametro.encriptarPassword();
+      console.log(this.parametro)
+    }
+  }
+
+  cargarUsuarios() {
+
   }
 
   loginSubmit() {
