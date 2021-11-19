@@ -30,13 +30,13 @@
         "rol": "user"
     },
     {
-        "nombre": "Klaudijus",
-        "apellidos": "Miskinis",
-        "correo": "klaudiusmiskinis@gmail.com",
-        "edad": 21,
-        "avatar": "default.jpg",
+        "nombre": "admin",
+        "apellidos": "admin",
+        "correo": "admin@rsocial.com",
+        "edad": 0,
+        "avatar": "crown.jpg",
         "password": "$2a$10$kq13Wg4NQWFPL7meUMja5OBLkVEBG7Fcv8kcJU8XDT.b/7mhbZfZ.",
-        "descripcion": "Me llamo Klaudijus y soy un admin",
+        "descripcion": "Me llamo admin y soy el admin",
         "rol": "admin"
     },
     {

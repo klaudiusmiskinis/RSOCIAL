@@ -13,21 +13,22 @@ import * as bcrypt from 'bcryptjs';
 export class RegisterComponent {
   registerForm: FormGroup;
   router: Router;
+  checkCross: CheckCross;
+  deshabilitado: string;
   usuario;
-  checkCross: CheckCross = new CheckCross();
-  deshabilitado: string = "mt-2 shadow-sm text-center btn btn-outline-color disabled";
-
-  error = {
-    texto: '',
-    class: ''
-  }
+  error;
 
   constructor(private formBuilder: FormBuilder, router: Router) {
     this.formBuilder = formBuilder;
+    this.checkCross = new CheckCross();
     this.router = router;
+    this.deshabilitado = "mt-2 shadow-sm text-center btn btn-outline-color disabled";
+    this.error = {
+      texto: '',
+      class: ''
+    }
   };
 
-  
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
         username: ['', Validators.required],

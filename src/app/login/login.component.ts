@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { writeJsonFile } from 'write-json-file';
 import { Usuario } from '../class/usuario';
 import cuentas from '../json/cuentas.json';
-
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +28,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.cargarUsuarios();
-    console.log(this.usuarios)
     this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required]
@@ -50,11 +48,12 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  async guardarUsuarios() {
-    await writeJsonFile('../json/cuentas_backup_new.json', {cuentas: this.cuentas});
-  }
-
   loginSubmit() {
+    let data = {
+      username: this.loginForm.get('username')?.value,
+      email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value
+    }
     this.loginForm = new FormGroup({
       username: new FormControl(),
       password: new FormControl(),
