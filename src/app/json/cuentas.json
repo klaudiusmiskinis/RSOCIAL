@@ -5,7 +5,7 @@
         "correo": "pmermeladasuave@gmail.com",
         "edad": 30,
         "avatar": "default.jpg",
-        "password": "$2a$10$J1N64bXEoe6yWxKB4iqQSeUqvArnDe4RM/kphCWKetv3c5qqTip7K",
+        "password": "$2a$10$jnaJdjEswvIb9RMjbTYTkeBt5oLebtLKrVrh6l874djrPHJ0UW7Gu",
         "descripcion": "Me llamo Paco y me encanta el parmesano",
         "rol": "user"
     },
@@ -15,7 +15,7 @@
         "correo": "lgonzalezadobe@gmail.com",
         "edad": 19,
         "avatar": "default.jpg",
-        "password": "$2a$10$awV22ItC6b91QVang6bgtOkoO7rb1JR8/q3HX0Tfei5hj1wA2P0T.",
+        "password": "$2a$10$jnaJdjEswvIb9RMjbTYTkeBt5oLebtLKrVrh6l874djrPHJ0UW7Gu",
         "descripcion": "Me llamo Lucía y me encanta el sexo",
         "rol": "user"
     },
@@ -25,7 +25,7 @@
         "correo": "mmarquezalonso@gmail.com",
         "edad": 25,
         "avatar": "default.jpg",
-        "password": "$2a$10$qA8Cmgrv9AHIsE9RDI3uI.aETU2t1LqMgKvT9u.X3MxkIB0PzJSW.",
+        "password": "$2a$10$jnaJdjEswvIb9RMjbTYTkeBt5oLebtLKrVrh6l874djrPHJ0UW7Gu",
         "descripcion": "Me llamo Marc y me encantan las motos",
         "rol": "user"
     },

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UsuariosService } from '../usuarios.service';
+import { Router } from '@angular/router';
+import { UsuariosService } from '../services/usuarios.service';
 import { Usuario } from '../class/usuario';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +12,13 @@ import { Usuario } from '../class/usuario';
 })
 
 export class LoginComponent implements OnInit {
-  public activatedRouter: ActivatedRoute;
   public loginForm: FormGroup;
   public router: Router;
   public usuarios;
   public usuario;
 
-  constructor(private formBuilder: FormBuilder, router: Router, activatedRouter: ActivatedRoute, usuariosService: UsuariosService) {
+  constructor(private formBuilder: FormBuilder, router: Router, usuariosService: UsuariosService) {
     this.formBuilder = formBuilder;
-    this.activatedRouter = activatedRouter;
     this.usuarios = usuariosService;
     this.router = router;
   };
@@ -29,23 +28,16 @@ export class LoginComponent implements OnInit {
         username: ['', Validators.required],
         password: ['', Validators.required]
     });
-    this.activatedRouter.params.subscribe(usuarioNuevo => {
-      this.usuario = usuarioNuevo;
-      this.usuario = new Usuario(this.usuario.username, this.usuario.username, this.usuario.email, 0, './default.jpg', this.usuario.password, 'texto', 'user');
-      if (this.usuario.nombre != undefined) {
-        this.usuarios.addUsuario(this.usuario);
-      };
-      this.router.navigate(['/login']);
-    });
-    console.log(this.usuarios)
   };
 
   loginSubmit() {
     let data = {
       username: this.loginForm.get('username')?.value,
-      email: this.loginForm.get('email')?.value,
+      email: this.loginForm.get('username')?.value,
       password: this.loginForm.get('password')?.value
     }
+    let encontrado = this.usuarios.usuarios.filter(usuario => usuario.email == data.email);
+    console.log(encontrado);
     this.loginForm = new FormGroup({
       username: new FormControl(),
       password: new FormControl(),

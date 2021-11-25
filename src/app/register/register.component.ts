@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CheckCross } from '../class/checkCross';
-import { UsuariosService } from '../usuarios.service';
+import { UsuariosService } from '../services/usuarios.service';
 import { Usuario } from '../class/usuario';
 import * as bcrypt from 'bcryptjs';
 
@@ -134,5 +134,6 @@ export class RegisterComponent {
     });
     this.usuarios.addUsuario(this.usuario);
     this.usuario = null;
+    this.router.navigate(['login'])
   }
 }
