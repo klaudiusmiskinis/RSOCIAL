@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsuariosService } from '../usuarios.service';
 import { Usuario } from '../class/usuario';
-import cuentas from '../json/cuentas.json';
-import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
@@ -12,22 +11,20 @@ import * as bcrypt from 'bcryptjs';
 })
 
 export class LoginComponent implements OnInit {
-  public cuentas: Usuario[] = cuentas;
   public activatedRouter: ActivatedRoute;
   public loginForm: FormGroup;
-  public usuarios: Usuario[];
   public router: Router;
+  public usuarios;
   public usuario;
 
-  constructor(private formBuilder: FormBuilder, router: Router, activatedRouter: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, router: Router, activatedRouter: ActivatedRoute, usuariosService: UsuariosService) {
     this.formBuilder = formBuilder;
     this.activatedRouter = activatedRouter;
+    this.usuarios = usuariosService;
     this.router = router;
-    this.usuarios = [];
   };
 
   ngOnInit() {
-    this.cargarUsuarios();
     this.loginForm = this.formBuilder.group({
         username: ['', Validators.required],
         password: ['', Validators.required]
@@ -36,17 +33,12 @@ export class LoginComponent implements OnInit {
       this.usuario = usuarioNuevo;
       this.usuario = new Usuario(this.usuario.username, this.usuario.username, this.usuario.email, 0, './default.jpg', this.usuario.password, 'texto', 'user');
       if (this.usuario.nombre != undefined) {
-        this.usuarios.push(this.usuario);
+        this.usuarios.addUsuario(this.usuario);
       };
       this.router.navigate(['/login']);
     });
+    console.log(this.usuarios)
   };
-
-  cargarUsuarios() {
-    this.cuentas.forEach(cuenta => {
-      this.usuarios.push(cuenta);
-    })
-  }
 
   loginSubmit() {
     let data = {
