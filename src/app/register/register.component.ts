@@ -41,7 +41,6 @@ export class RegisterComponent {
         password: ['', Validators.required],
         passwordRepetir: ['', Validators.required]
     });
-    console.log(this.usuarios)
   }
 
   allVerified(): void {
@@ -134,5 +133,6 @@ export class RegisterComponent {
         passwordRepetir: new FormControl()
     });
     this.usuarios.addUsuario(this.usuario);
+    this.usuario = null;
   }
 }
