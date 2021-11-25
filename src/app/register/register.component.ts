@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CheckCross } from '../class/checkCross';
+import { UsuariosService } from '../usuarios.service';
+import { Usuario } from '../class/usuario';
 import * as bcrypt from 'bcryptjs';
 
 @Component({
@@ -11,15 +13,18 @@ import * as bcrypt from 'bcryptjs';
 })
 
 export class RegisterComponent {
+  
   registerForm: FormGroup;
-  router: Router;
   checkCross: CheckCross;
   deshabilitado: string;
+  router: Router;
+  usuarios;
   usuario;
   error;
 
-  constructor(private formBuilder: FormBuilder, router: Router) {
+  constructor(private formBuilder: FormBuilder, router: Router, usuariosService: UsuariosService) {
     this.formBuilder = formBuilder;
+    this.usuarios = usuariosService;
     this.checkCross = new CheckCross();
     this.router = router;
     this.deshabilitado = "mt-2 shadow-sm text-center btn btn-outline-color disabled";
@@ -36,6 +41,7 @@ export class RegisterComponent {
         password: ['', Validators.required],
         passwordRepetir: ['', Validators.required]
     });
+    console.log(this.usuarios)
   }
 
   allVerified(): void {
@@ -119,17 +125,23 @@ export class RegisterComponent {
   }
 
   async registerSubmit() {
-    let data = {
-      username: this.registerForm.get('username')?.value,
-      email: this.registerForm.get('email')?.value,
-      password: await bcrypt.hashSync(this.registerForm.get('password')?.value, 10)
-    }
+    let password = await bcrypt.hashSync(this.registerForm.get('password')?.value, 10)
+    this.usuario = new Usuario(
+      this.registerForm.get('username')?.value, 
+      this.registerForm.get('username')?.value, 
+      this.registerForm.get('email')?.value, 
+      0, 
+      './default.jpg',
+       password, 
+       'texto', 
+       'user'
+      );
     this.registerForm = new FormGroup({
         username: new FormControl(),
         email: new FormControl(),
         password: new FormControl(),
         passwordRepetir: new FormControl()
     });
-    this.router.navigate(['login', data])
+    this.usuarios.addUsuario(this.usuario);
   }
 }
