@@ -126,16 +126,7 @@ export class RegisterComponent {
 
   async registerSubmit() {
     let password = await bcrypt.hashSync(this.registerForm.get('password')?.value, 10)
-    this.usuario = new Usuario(
-      this.registerForm.get('username')?.value, 
-      this.registerForm.get('username')?.value, 
-      this.registerForm.get('email')?.value, 
-      0, 
-      './default.jpg',
-       password, 
-       'texto', 
-       'user'
-      );
+    this.usuario = new Usuario(this.registerForm.get('username')?.value, this.registerForm.get('username')?.value, this.registerForm.get('email')?.value, 0, './default.jpg', password, 'texto', 'user');
     this.registerForm = new FormGroup({
         username: new FormControl(),
         email: new FormControl(),
