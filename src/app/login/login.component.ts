@@ -31,6 +31,15 @@ export class LoginComponent implements OnInit {
     });
   };
 
+  validacionEmail(){
+    let valor = this.loginForm.value.username
+    console.log(valor)
+  }
+
+  validacionPassword(){
+
+  }
+
   loginSubmit() {
     let data = {
       username: this.loginForm.get('username')?.value,
@@ -48,7 +57,7 @@ export class LoginComponent implements OnInit {
       password: new FormControl(),
     });
     if (this.acceso) {
-      this.router.navigate(['home', {usuario: encontrado}])
+      this.router.navigate(['home', { usuario: encontrado.email }])
     }
   }
 };
