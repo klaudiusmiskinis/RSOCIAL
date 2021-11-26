@@ -16,4 +16,8 @@ export class UsuariosService {
   getUsuarios(): Usuario[]{
     return this.usuarios;
   }
+
+  findUsuarioByEmail(email, usuarios) {
+    return usuarios.filter(usuario => usuario.correo === email);
+  }
 }
