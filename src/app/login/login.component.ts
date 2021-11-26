@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UsuariosService } from '../services/usuarios.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from '../class/usuario';
 import * as bcrypt from 'bcryptjs';
 
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   public router: Router;
   public usuarios;
   public usuario;
+  public acceso = false;
 
   constructor(private formBuilder: FormBuilder, router: Router, usuariosService: UsuariosService) {
     this.formBuilder = formBuilder;
@@ -36,12 +37,19 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.get('username')?.value,
       password: this.loginForm.get('password')?.value
     }
-    let encontrado = this.usuarios.usuarios.filter(usuario => usuario.email == data.email);
-    console.log(encontrado);
+    let encontrado = this.usuarios.usuarios.filter(usuario => usuario.correo === data.email);
+    let resultado = bcrypt.compareSync(data.password, encontrado[0].password)
+    if ((encontrado != ('')) && (data.password != '') && (resultado)) {
+      this.acceso = true;
+      console.log(encontrado)
+    }
     this.loginForm = new FormGroup({
       username: new FormControl(),
       password: new FormControl(),
     });
+    if (this.acceso) {
+      this.router.navigate(['home', {usuario: encontrado}])
+    }
   }
 };
 
