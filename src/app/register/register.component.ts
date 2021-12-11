@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CheckCross } from '../class/checkCross';
@@ -13,14 +13,13 @@ import * as bcrypt from 'bcryptjs';
 })
 
 export class RegisterComponent {
-  
-  registerForm: FormGroup;
-  checkCross: CheckCross;
-  deshabilitado: string;
-  router: Router;
-  usuarios;
-  usuario;
-  error;
+  public registerForm: FormGroup;
+  public checkCross: CheckCross;
+  public deshabilitado: string;
+  public router: Router;
+  public usuarios;
+  public usuario;
+  public error;
 
   constructor(private formBuilder: FormBuilder, router: Router, usuariosService: UsuariosService) {
     this.formBuilder = formBuilder;
