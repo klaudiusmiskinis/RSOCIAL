@@ -5,40 +5,31 @@ La idea de RSOCIAL es poner en contacto a persona para que puedan conocerse.
 
 ## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local._
 
-Mira **Despliegue** para conocer como desplegar el proyecto.
+Mira **Instalación** para conocer como desplegar el proyecto.
 
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
-
-```
-Da un ejemplo
-```
+_Es importante tener NODE instalado en nuestro equipo._
+_Tambien tenemos que asegurarnos de que los modulos de Angular se encuentran en las rutas de variables de entorno del proyecto._
 
 ### Instalación 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
+_Una vez tengamos el direcotorio del proyecto, deberemos instalar y desplegar por un CLI (VSC o CMD)_
 
-_Dí cómo será ese paso_
-
-```
-Da un ejemplo
-```
-
-_Y repite_
+_Instalación del proyecto_
 
 ```
-hasta finalizar
+npm install
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+_Desplegar proyecto_
 
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
+```
+ng -o serve
+```
 
 ## Construido con 🛠️
 
