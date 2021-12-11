@@ -2,7 +2,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UsuariosService } from '../services/usuarios.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from '../class/usuario';
 import * as bcrypt from 'bcryptjs';
 
 @Component({
@@ -26,38 +25,37 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-        username: ['', Validators.required],
+        email: ['', Validators.required],
         password: ['', Validators.required]
     });
   };
 
   validacionEmail(){
-    let valor = this.loginForm.value.username
-    console.log(valor)
+    let val = this.loginForm.value.email
   }
 
   validacionPassword(){
-
+    let pass = this.loginForm.value.password
   }
 
   loginSubmit() {
     let data = {
-      username: this.loginForm.get('username')?.value,
-      email: this.loginForm.get('username')?.value,
+      email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value
     }
     let encontrado = this.usuarios.usuarios.filter(usuario => usuario.correo === data.email);
-    let resultado = bcrypt.compareSync(data.password, encontrado[0].password)
-    if ((encontrado != ('')) && (data.password != '') && (resultado)) {
-      this.acceso = true;
-      console.log(encontrado)
-    }
-    this.loginForm = new FormGroup({
-      username: new FormControl(),
-      password: new FormControl(),
-    });
-    if (this.acceso) {
-      this.router.navigate(['home', { usuario: encontrado.email }])
+    if (encontrado) {
+      let resultado = bcrypt.compareSync(data.password, encontrado[0].password)
+      if ((encontrado != ('')) && (data.password != '') && (resultado)) {
+        this.acceso = true;
+        this.loginForm = new FormGroup({
+          username: new FormControl(),
+          password: new FormControl(),
+        });
+        if (this.acceso) {
+          this.router.navigate(['home', { usuario: encontrado[0].correo }])
+        }
+      }
     }
   }
 };
