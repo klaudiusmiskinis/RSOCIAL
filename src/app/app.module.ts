@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BackgroundComponent } from './background/background.component';
 import { HomeComponent } from './home/home.component';
+import { BackgroundGradienteComponent } from './background-gradiente/background-gradiente.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegisterComponent,
     BackgroundComponent,
-    HomeComponent
+    HomeComponent,
+    BackgroundGradienteComponent
   ],
   imports: [
     BrowserModule,
