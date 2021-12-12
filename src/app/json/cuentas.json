@@ -16,7 +16,7 @@
         "edad": 19,
         "avatar": "default.jpg",
         "password": "$2a$10$jnaJdjEswvIb9RMjbTYTkeBt5oLebtLKrVrh6l874djrPHJ0UW7Gu",
-        "descripcion": "Me llamo Lucía y me encanta el sexo",
+        "descripcion": "Me llamo Lucía y me encanta el LOL",
         "rol": "user"
     },
     {
@@ -34,7 +34,7 @@
         "apellidos": "admin",
         "correo": "admin@rsocial.com",
         "edad": 0,
-        "avatar": "crown.jpg",
+        "avatar": "/assets/img/user.png",
         "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
         "descripcion": "Me llamo admin y soy el admin",
         "rol": "admin"
