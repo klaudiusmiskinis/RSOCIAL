@@ -13,6 +13,7 @@ import * as bcrypt from 'bcryptjs';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public router: Router;
+  public submit;
   public usuarios;
   public usuario;
   public acceso = false;
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
     this.formBuilder = formBuilder;
     this.usuarios = usuariosService;
     this.router = router;
+    this.submit = 'mt-3 shadow-sm text-center btn btn-outline-color disabled'
   };
 
   ngOnInit() {
@@ -30,12 +32,18 @@ export class LoginComponent implements OnInit {
     });
   };
 
-  validacionEmail(){
-    let val = this.loginForm.value.email
-  }
-
-  validacionPassword(){
-    let pass = this.loginForm.value.password
+  validacion() {
+    let mail = this.loginForm.value.email;
+    let pass = this.loginForm.value.password;
+    if (this.comprobarEmail(mail)){
+      if (mail && pass && pass.length > 2) {
+        this.enableSubmit();
+      } else {
+        this.disableSubmit();
+      }
+    } else {
+      this.disableSubmit();
+    }
   }
 
   loginSubmit() {
@@ -43,20 +51,37 @@ export class LoginComponent implements OnInit {
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value
     }
+    
     let encontrado = this.usuarios.usuarios.filter(usuario => usuario.correo === data.email);
     if (encontrado) {
       let resultado = bcrypt.compareSync(data.password, encontrado[0].password)
-      if ((encontrado != ('')) && (data.password != '') && (resultado)) {
+      if (resultado) {
         this.acceso = true;
-        this.loginForm = new FormGroup({
-          username: new FormControl(),
-          password: new FormControl(),
-        });
         if (this.acceso) {
           this.router.navigate(['home', { usuario: encontrado[0].correo }])
         }
       }
     }
+
+    this.loginForm = new FormGroup({
+      email: new FormControl(),
+      password: new FormControl(),
+    });
+  }
+
+  comprobarEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+  disableSubmit() {
+    if (!this.submit.includes('disabled')) {
+      this.submit = this.submit + 'disabled'
+    }
+  }
+
+  enableSubmit() {
+    this.submit = this.submit.split('disabled')[0];
   }
 };
 
