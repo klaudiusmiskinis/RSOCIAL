@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
 :host {
     --dark: #212529;
@@ -7,6 +8,7 @@
     --col-hover: #0a6679;
     --col: #0dcaf0;
     --b: #fff;
+    --transicion: .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 ::selection {
@@ -18,8 +20,12 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-#contenedor-login {
-    margin-top: 9rem;
+#contenedor {
+    margin-top: 4rem;
+}
+
+#sidebar {
+    z-index: 1000;
 }
 
 .bg-danger {
@@ -27,15 +33,11 @@
 }
 
 .border-color {
-    border: 1px solid var(--col) !important;
+    border-color: var(--col) !important;
 }
 
 .background-color {
     background-color: var(--col) !important;
-}
-
-.text-color {
-    color: var(--col) !important
 }
 
 .btn-color {
@@ -45,6 +47,10 @@
 
 .btn-color:hover {
     background-color: var(--col-hover) !important;
+}
+
+.text-color {
+    color: var(--col) !important;
 }
 
 .btn-outline-color {
@@ -62,22 +68,26 @@
 .form-control {
     border-color: transparent;
     background-color: var(--b);
-    transition: .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition:  var(--transicion);
 }
 
 .form-control:focus {
     border-color: var(--col);
-    transition: .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: var(--transicion);
 }
 
 .link-color {
     cursor: pointer;
     color: var(--col) !important;
-    transition: .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: var(--transicion);
 }
 
 .link-color:hover {
     cursor: pointer;
     color: var(--col-hover) !important;
-    transition: .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: var(--transicion);
+}
+
+.icono {
+    font-size: 1.3rem;
 }
