@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BackgroundComponent } from './background/background.component';
 import { HomeComponent } from './home/home.component';
+import { PoliticaPrivacidadComponent } from './politica-privacidad/politica-privacidad.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
     RegisterComponent,
     BackgroundComponent,
     HomeComponent,
+    PoliticaPrivacidadComponent,
   ],
   imports: [
     BrowserModule,
