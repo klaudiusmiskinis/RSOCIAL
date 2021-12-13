@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Usuario } from '../class/usuario';
 import { UsuariosService } from '../services/usuarios.service';
 declare var jQuery:any, $:any;
 
@@ -25,7 +26,6 @@ export class HomeComponent implements OnInit {
     if (!this.logged) return this.router.navigate(['login']);
     this.logged = this.usuarios.usuarios.filter(usuario => usuario.correo === this.logged);
     this.logged = this.logged[0]
-    $('#lateral-perfil').toggleClass('hide');
     // window.history.replaceState({}, document.title, "/home");
   }
 
