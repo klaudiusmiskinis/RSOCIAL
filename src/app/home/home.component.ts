@@ -22,18 +22,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!this.logged) return this.router.navigate(['login'])
+    if (!this.logged) return this.router.navigate(['login']);
     this.logged = this.usuarios.usuarios.filter(usuario => usuario.correo === this.logged);
     this.logged = this.logged[0]
-    console.log(this.logged);
+    $('#lateral-perfil').toggleClass('hide');
     // window.history.replaceState({}, document.title, "/home");
   }
 
   getParametros() {
    return this.route.params._value.usuario
-  }
-
-  panelPerfil() {
-    $('#lateral-perfil').toggleClass('open');
   }
 }

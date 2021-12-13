@@ -4,7 +4,7 @@
 
     <div class="container-fluid bg-dark border-bottom border-color d-flex justify-content-between p-2 px-4">
         <a href="#" class="link-color">
-            <i class="bi bi-person icono-sm" (click)="panelPerfil()"></i>
+            <i class="bi bi-person icono-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#lateralPerfil" aria-controls="lateralPerfil"></i>
         </a>
         <a href="#" class="link-color">
             <i class="bi bi-house icono-sm"></i>
@@ -15,30 +15,36 @@
     </div>
     
 
-    <div class="navbar-collapse offcanvas-collapse" id="lateral-perfil">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Dashboard</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Notifications</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Switch account</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+    <div class="offcanvas offcanvas-start bg-dark border-end border-color" data-bs-scroll="true" tabindex="-1" id="lateralPerfil" aria-labelledby="lateralPerfilTag">
+        <div class="offcanvas-header border-bottom border-color text-color p-1">
+          <h5 class="offcanvas-title" id="lateralPerfilTag">RSOCIAL</h5>
+            <button class="link-color btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="bi bi-x icono"></i>
+            </button>
+        </div>
+        <div class="offcanvas-body text-dark">
+            <div class="row d-grid m-2 gap-2">
+                <h5 class="text-color text-center">Panel de control</h5>
+                <div class="btn btn-sm btn-outline-color">
+                    <i class="bi bi-chat-dots-fill"></i>
+                    Chat
                 </div>
-            </li>
-        </ul>
+                <div class="btn btn-sm btn-outline-color">
+                    <i class="bi bi-person-fill"></i>
+                    Perfil
+                </div>
+                <div class="btn btn-sm btn-outline-color">
+                    <i class="bi bi-gear-wide-connected"></i>
+                    Preferencias
+                </div>
+                <div class="btn btn-sm btn-outline-color">
+                    <i class="bi bi-question-circle-fill"></i>
+                    Asistencia técnica
+                </div>
+                <div class="btn btn-sm btn-outline-color">
+                    <i class="bi bi-question-circle-fill"></i>
+                    Politica de privacidad
+                </div>
+            </div>
+        </div>
     </div>
-
-
-</body>
