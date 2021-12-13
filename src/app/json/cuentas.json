@@ -5,9 +5,13 @@
         "correo": "pmermeladasuave@gmail.com",
         "edad": 30,
         "avatar": "default.jpg",
-        "password": "$2a$10$jnaJdjEswvIb9RMjbTYTkeBt5oLebtLKrVrh6l874djrPHJ0UW7Gu",
+        "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
         "descripcion": "Me llamo Paco y me encanta el parmesano",
-        "rol": "user"
+        "rol": "user",
+        "amigos": [
+            "lgonzalezadobe@gmail.com",
+            "mmarquezalonso@gmail.com"
+        ]
     },
     {
         "nombre": "Lucía",
@@ -15,9 +19,13 @@
         "correo": "lgonzalezadobe@gmail.com",
         "edad": 19,
         "avatar": "default.jpg",
-        "password": "$2a$10$jnaJdjEswvIb9RMjbTYTkeBt5oLebtLKrVrh6l874djrPHJ0UW7Gu",
+        "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
         "descripcion": "Me llamo Lucía y me encanta el LOL",
-        "rol": "user"
+        "rol": "user",
+        "amigos": [
+            "avargamedios@gmail.com",
+            "mmarquezalonso@gmail.com"
+        ]
     },
     {
         "nombre": "Marc",
@@ -25,9 +33,13 @@
         "correo": "mmarquezalonso@gmail.com",
         "edad": 25,
         "avatar": "default.jpg",
-        "password": "$2a$10$jnaJdjEswvIb9RMjbTYTkeBt5oLebtLKrVrh6l874djrPHJ0UW7Gu",
+        "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
         "descripcion": "Me llamo Marc y me encantan las motos",
-        "rol": "user"
+        "rol": "user",
+        "amigos": [
+            "lgonzalezadobe@gmail.com",
+            "mmarquezalonso@gmail.com"
+        ]
     },
     {
         "nombre": "admin",
@@ -37,16 +49,59 @@
         "avatar": "/assets/img/user.png",
         "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
         "descripcion": "Me llamo admin y soy el admin",
-        "rol": "admin"
+        "rol": "admin",
+        "amigos": []
     },
     {
-        "nombre": "Julio",
-        "apellidos": "Valencia Gallego",
-        "correo": "jvalenciagallego@gmail.com",
+        "nombre": "Alba",
+        "apellidos": "Vargame Dios",
+        "correo": "avargamedios@gmail.com",
+        "edad": 25,
+        "avatar": "default.jpg",
+        "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
+        "descripcion": "Me llamo Alba y soy una adicta al solomillo",
+        "rol": "user",
+        "amigos": [
+            "lgonzalezadobe@gmail.com"
+        ]
+    },
+    {
+        "nombre": "Sudaca",
+        "apellidos": "Americano Sureño",
+        "correo": "samericanosureno@gmail.com",
+        "edad": 32,
+        "avatar": "default.jpg",
+        "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
+        "descripcion": "Me llamo Sudaca y mis amigos me llaman Panchito",
+        "rol": "user",
+        "amigos": [
+            "avargamedios@gmail.com"
+        ]
+    },
+    {
+        "nombre": "Zelda",
+        "apellidos": "Pancha Arcana",
+        "correo": "zelda@gmail.com",
         "edad": 27,
         "avatar": "default.jpg",
-        "password": "$2a$10$48mCNuRMdiHWGw5AXXEi3OPCiYutTdGU9RsxodZJ3bZxSkJGr.QiG",
-        "descripcion": "Me llamo Julio y soy un adicto a la birra",
-        "rol": "user"
+        "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
+        "descripcion": "Me llamo Zelda y estoy buscando a mi princesa",
+        "rol": "user",
+        "amigos": [
+            "avargamedios@gmail.com"
+        ]
+    },
+    {
+        "nombre": "Percha",
+        "apellidos": "Valencia Armario",
+        "correo": "percha@gmail.com",
+        "edad": 21,
+        "avatar": "default.jpg",
+        "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
+        "descripcion": "Me llamo Percha y estoy colgao",
+        "rol": "user",
+        "amigos": [
+            "avargamedios@gmail.com"
+        ]
     }
 ]
