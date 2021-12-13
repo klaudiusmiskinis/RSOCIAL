@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { BackgroundComponent } from './background/background.component';
 import { HomeComponent } from './home/home.component';
-import { PoliticaPrivacidadComponent } from './politica-privacidad/politica-privacidad.component';
+import { PrivacidadComponent } from './privacidad/privacidad.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { PoliticaPrivacidadComponent } from './politica-privacidad/politica-priv
     RegisterComponent,
     BackgroundComponent,
     HomeComponent,
-    PoliticaPrivacidadComponent,
+    PrivacidadComponent,
   ],
   imports: [
     BrowserModule,
