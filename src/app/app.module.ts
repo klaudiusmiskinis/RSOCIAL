@@ -12,6 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { BackgroundComponent } from './background/background.component';
 import { HomeComponent } from './home/home.component';
 import { PrivacidadComponent } from './privacidad/privacidad.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { PrivacidadComponent } from './privacidad/privacidad.component';
     BackgroundComponent,
     HomeComponent,
     PrivacidadComponent,
+    PerfilComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
