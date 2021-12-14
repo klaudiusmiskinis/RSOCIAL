@@ -26,16 +26,19 @@ export class LoginComponent implements OnInit {
   };
 
   ngOnInit() {
+    if (localStorage.getItem('user') != 'logout') this.router.navigate(['home'])
+    else (localStorage.clear())
     this.loginForm = this.formBuilder.group({
         email: ['', Validators.required],
         password: ['', Validators.required]
-    });
+      });
   };
 
   validacion() {
+    
     let mail = this.loginForm.value.email;
     let pass = this.loginForm.value.password;
-    if (this.comprobarEmail(mail)){
+    if (this.comprobarEmail(mail)) {
       if (mail && pass && pass.length > 2) {
         this.enableSubmit();
       } else {
@@ -52,13 +55,14 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password')?.value
     }
     
-    let encontrado = this.usuarios.usuarios.filter(usuario => usuario.correo === data.email);
+    let encontrado = this.usuarios.findUsuarioByEmail(data.email);
     if (encontrado) {
       let resultado = bcrypt.compareSync(data.password, encontrado[0].password)
       if (resultado) {
         this.acceso = true;
         if (this.acceso) {
-          this.router.navigate(['home', { usuario: encontrado[0].correo }])
+          localStorage.setItem('user', encontrado[0].correo)
+          this.router.navigate(['home'])
         }
       }
     }
