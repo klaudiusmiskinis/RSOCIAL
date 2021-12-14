@@ -9,9 +9,10 @@ export class Usuario {
     password: string;
     descripcion: string;
     rol: string;
+    amigos: string[];
     
     /* CONSTRUCTOR */
-    constructor(nombre: string, apellidos: string, correo: string, edad: number, avatar: string, password: string, descripcion: string, rol: string){
+    constructor(nombre: string, apellidos: string, correo: string, edad: number, avatar: string, password: string, descripcion: string, rol: string, amigos?: string[]){
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
@@ -19,7 +20,9 @@ export class Usuario {
         this.avatar = avatar;
         this.password = password;
         this.descripcion = descripcion;
-        this.rol = rol
+        this.rol = rol,
+        this.amigos = amigos || [];
+
     };
 
     /* GETTERs */
@@ -55,6 +58,10 @@ export class Usuario {
         return this.rol;
     };
 
+    getAmigos(): string[] {
+        return this.amigos;
+    }
+
     /* SETTERs */
     setNombre(nombre: string): void {
         this.nombre = nombre;
@@ -86,6 +93,14 @@ export class Usuario {
 
     setRol(rol: string): void {
         this.rol = rol;
+    }
+
+    setAmigos(amigos: string[]): void {
+        this.amigos = amigos;
+    }
+
+    addAmigo(amigo: string): void {
+        this.amigos.push(amigo);
     }
 
     /* MÉTODOS */
