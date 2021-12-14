@@ -22,13 +22,13 @@
             </button>
         </div>
         <div class="offcanvas-body text-dark">
-            <div class="row d-grid m-2 gap-2">
+            <div class="row d-grid mx-2 gap-2">
                 <h5 class="text-color text-center">Panel de control</h5>
                 <button class="btn btn-sm btn-outline-color">
                     <i class="bi bi-chat-dots-fill"></i>
                     Chat
                 </button>
-                <button class="btn btn-sm btn-outline-color">
+                <button class="btn btn-sm btn-outline-color" routerLink="/perfil">
                     <i class="bi bi-person-fill"></i>
                     Perfil
                 </button>
@@ -40,10 +40,13 @@
                     <i class="bi bi-question-circle-fill"></i>
                     Asistencia técnica
                 </button>
-                <h5 class="text-color text-center mt-2">Avisos legales</h5>
                 <button class="btn btn-sm btn-outline-color" routerLink="/politica">
                     <i class="bi bi-lock-fill"></i>
                     Políticas
+                </button>
+                <button class="btn btn-sm btn-outline-danger" routerLink="/logout">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    Cerrar sesión
                 </button>
             </div>
         </div>
