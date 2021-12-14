@@ -23,7 +23,6 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app).toEqual('RSOCIAL');
     expect(app).toEqual('redes-sociales');
-
   });
 
   it('should render title', () => {
