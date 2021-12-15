@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+@import '~swiper/swiper-bundle.min.css';
 
 :host {
     --dark: #212529;
