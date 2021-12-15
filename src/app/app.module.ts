@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { SwiperModule } from 'ngx-swiper-wrapper';
 
 /* IMPORTANDO COMPONENTES */
 import { AppComponent } from './app.component';
@@ -31,8 +31,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     ReactiveFormsModule,
-    NgxUsefulSwiperModule,
     BrowserModule,
+    SwiperModule,
     FormsModule,
     Routing,
   ],
