@@ -13,7 +13,8 @@ import { BackgroundComponent } from './background/background.component';
 import { HomeComponent } from './home/home.component';
 import { PrivacidadComponent } from './privacidad/privacidad.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { LogoutComponent } from './logout/logout.component';
+import { PanelLateralPerfilComponent } from './panel-lateral-perfil/panel-lateral-perfil.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LogoutComponent } from './logout/logout.component';
     HomeComponent,
     PrivacidadComponent,
     PerfilComponent,
-    LogoutComponent,
+    PanelLateralPerfilComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
