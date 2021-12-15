@@ -1,15 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['../app.component.css']
 })
-export class PerfilComponent implements OnInit {
 
-  constructor() { }
+export class PerfilComponent implements OnInit {
+  public logged;
+  public router;
+
+  constructor(Router: Router) {
+    this.router = Router;
+    this.logged = localStorage.getItem('user');
+  }
 
   ngOnInit(): void {
+    if (!this.logged) return this.router.navigate(['login']);
+  
   }
+
+  
 
 }
