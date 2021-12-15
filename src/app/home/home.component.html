@@ -3,11 +3,22 @@
 <body class="bg-gradiente">
     <navbar></navbar>
     <app-panel-lateral-perfil></app-panel-lateral-perfil>
-    <div class="container-fluid">
-        <div class="row text-color">
-            <div class="col">asd</div>
-            <div class="col">dsa</div>
-        </div>
+
+    <!-- SWIPER AMIGOS -->
+    <div *ngIf="amigos.length > 0" class="container-sm mt-2">
+        <h6 class="text-color">{{ amigos.length }} Amigos</h6>
+        <swiper *ngIf="show" class="swiper-container text-color" fxFlex="auto" [config]="config" [disabled]="disabled" (indexChange)="onIndexChange($event)" (swiperTransitionStart)="onSwiperEvent('transitionStart')" (swiperTransitionEnd)="onSwiperEvent('transitionEnd')">
+            <div *ngFor="let amigo of amigos" class="swiper-slide">
+                <div class="card bg-transparent border-color text-center">
+                    <div class="card-body mb-3" fxLayout="column" fxLayoutAlign="center">
+                        <h5 class="card-title">{{ amigo.nombre + ' ' + amigo.apellidos }}</h5>
+                        <p class="card-text">{{ amigo.descripcion }}</p>
+                    </div>
+                </div>
+            </div>
+        </swiper>
     </div>
-    
+    <!-- DESCUBRIR -->
+
+
 </body>
