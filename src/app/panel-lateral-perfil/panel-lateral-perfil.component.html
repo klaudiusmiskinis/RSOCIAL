@@ -28,6 +28,10 @@
                 <i class="bi bi-lock-fill"></i>
                 Políticas
             </button>
+            <button *ngIf="logged.rol == 'admin'" class="btn btn-sm btn-outline-color">
+                <i class="bi bi-moon-stars-fill"></i>
+                Admin
+            </button>
             <button class="btn btn-sm btn-outline-danger" (click)="logout()">
                 <i class="bi bi-box-arrow-in-right"></i>
                 Cerrar sesión
