@@ -1,53 +1,28 @@
 <title>Home</title>
 
 <body class="bg-gradiente">
-
-    <div class="container-fluid bg-dark border-bottom border-color d-flex justify-content-between p-2 px-4">
-        <a href="#" class="link-color">
-            <i class="bi bi-person icono-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#lateralPerfil" aria-controls="lateralPerfil"></i>
-        </a>
-        <a href="#" class="link-color">
-            <i class="bi bi-house icono-sm"></i>
-        </a>
-        <a href="#" class="link-color">
-            <i class="bi bi-bell icono-sm"></i>
-        </a>
-    </div>
-
-    <div class="offcanvas offcanvas-start bg-dark border-end border-color" data-bs-scroll="true" tabindex="-1" id="lateralPerfil" aria-labelledby="lateralPerfilTag">
-        <div class="offcanvas-header border-bottom border-color text-color p-1">
-          <h5 class="offcanvas-title" id="lateralPerfilTag">RSOCIAL</h5>
-            <button class="link-color btn" data-bs-dismiss="offcanvas" aria-label="Close">
-                <i class="bi bi-x icono"></i>
-            </button>
-        </div>
-        <div class="offcanvas-body text-dark">
-            <div class="row d-grid mx-2 gap-2">
-                <h5 class="text-color text-center">Panel de control</h5>
-                <button class="btn btn-sm btn-outline-color">
-                    <i class="bi bi-chat-dots-fill"></i>
-                    Chat
-                </button>
-                <button class="btn btn-sm btn-outline-color" routerLink="/perfil">
-                    <i class="bi bi-person-fill"></i>
-                    Perfil
-                </button>
-                <button class="btn btn-sm btn-outline-color">
-                    <i class="bi bi-gear-wide-connected"></i>
-                    Preferencias
-                </button>
-                <button type="button" class="btn btn-sm btn-outline-color">
-                    <i class="bi bi-question-circle-fill"></i>
-                    Asistencia técnica
-                </button>
-                <button class="btn btn-sm btn-outline-color" routerLink="/politica">
-                    <i class="bi bi-lock-fill"></i>
-                    Políticas
-                </button>
-                <button class="btn btn-sm btn-outline-danger" routerLink="/logout">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    Cerrar sesión
-                </button>
-            </div>
+    <navbar></navbar>
+    <app-panel-lateral-perfil></app-panel-lateral-perfil>
+    <div class="container-fluid">
+        <div class="row text-color">
+            <div class="col">asd</div>
+            <div class="col">dsa</div>
         </div>
     </div>
+
+    <div id="image-slider" class="splide">
+        <div class="splide__track">
+              <ul class="splide__list">
+                  <li class="splide__slide">
+                      <img src="image01.jpg">
+                  </li>
+                  <li class="splide__slide">
+                      <img src="image02.jpg">
+                  </li>
+                  <li class="splide__slide">
+                      <img src="image03.jpg">
+                  </li>
+              </ul>
+        </div>
+      </div>
+</body>
