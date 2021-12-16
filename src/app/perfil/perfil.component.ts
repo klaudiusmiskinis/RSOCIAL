@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuariosService } from '../services/usuarios.service';
 
 @Component({
   selector: 'app-perfil',
@@ -8,12 +9,14 @@ import { Router } from '@angular/router';
 })
 
 export class PerfilComponent implements OnInit {
-  public logged;
   public router;
+  public logged;
+  private usuarios;
 
-  constructor(Router: Router) {
+  constructor(Router: Router, usuariosService: UsuariosService) {
     this.router = Router;
-    this.logged = localStorage.getItem('user');
+    this.usuarios = usuariosService;
+    this.logged = this.usuarios.findUsuarioByEmail(localStorage.getItem('user'))[0]
   }
 
   ngOnInit(): void {
