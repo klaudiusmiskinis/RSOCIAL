@@ -36,7 +36,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormsModule,
     Routing,
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' }],
+  providers: [{provide: APP_BASE_HREF, useValue: '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
