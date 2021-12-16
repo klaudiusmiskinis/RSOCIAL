@@ -1,13 +1,17 @@
 <div class="offcanvas offcanvas-start bg-dark border-end border-color" data-bs-scroll="true" tabindex="-1" id="lateralPerfil" aria-labelledby="lateralPerfilTag">
-    <div class="offcanvas-header border-bottom border-color text-color p-1">
-      <h5 class="offcanvas-title" id="lateralPerfilTag">RSOCIAL</h5>
+    <div class="offcanvas-header border-bottom border-color text-color p-1">        
+    <small class="text-muted">
+        <i class="bi bi-person-circle"></i>
+          {{ logged.nombre + ' ' + logged.apellidos }}
+    </small>
         <button class="link-color btn" data-bs-dismiss="offcanvas" aria-label="Close">
             <i class="bi bi-x icono"></i>
         </button>
     </div>
-    <div class="offcanvas-body text-dark">
+    <div class="offcanvas-body text-color text-center">
         <div class="row d-grid mx-2 gap-2">
-            <h5 class="text-color text-center">Panel de control</h5>
+            
+            <h5 class="m-0 p-0">Panel de control</h5>
             <button class="btn btn-sm btn-outline-color">
                 <i class="bi bi-chat-dots-fill"></i>
                 Chat
