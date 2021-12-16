@@ -24,6 +24,8 @@ export class PerfilComponent implements OnInit {
   
   }
 
-  
+  actualizar() {
+    console.log()
+  }
 
 }

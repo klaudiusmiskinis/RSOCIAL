@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../class/usuario';
 import { UsuariosService } from '../services/usuarios.service';
-import { SwiperOptions, Thumbs } from 'swiper';
+import { SwiperOptions } from 'swiper';
 
 
 @Component({
@@ -39,7 +39,6 @@ export class HomeComponent implements OnInit {
     this.router = Router;
     this.route = ActivatedRoute
     this.usuarios = UsuariosService;
-    this.amigos = []
     this.logged = this.usuarios.findUsuarioByEmail(localStorage.getItem('user'))[0];
   }
 
@@ -50,10 +49,10 @@ export class HomeComponent implements OnInit {
         this.amigos.push(this.usuarios.findUsuarioByEmail(amigo)[0]);
       })
     }
-    console.log(this.amigos)
   }
 
   public onSwiperEvent(event: string): void {
+    
   }
 
   public onIndexChange(index: number): void {
