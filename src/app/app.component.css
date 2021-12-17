@@ -48,11 +48,13 @@
 
 .btn-color {
     background-color: var(--col) !important;
-    color: white;
+    color: var(--dark) !important;
 }
 
 .btn-color:hover {
-    background-color: var(--col-hover) !important;
+    background-color: transparent !important;
+    border: 1px solid var(--col) !important;
+    color: var(--col) !important;
 }
 
 .btn-outline-color {
