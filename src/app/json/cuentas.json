@@ -43,6 +43,21 @@
         ]
     },
     {
+        "nombre": "Klaudius",
+        "apellidos": "Miskinis",
+        "correo": "kmiskinis@gmail.com",
+        "edad": 25,
+        "avatar": "/assets/img/user.png",
+        "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
+        "descripcion": "Me llamo Klaudius y he hecho esta plataforma",
+        "rol": "user",
+        "amigos": [
+            "lgonzalezadobe@gmail.com",
+            "mmarquezalonso@gmail.com",
+            "percha@gmail.com"
+        ]
+    },
+    {
         "nombre": "admin",
         "apellidos": "admin",
         "correo": "admin@rsocial.com",
