@@ -7,7 +7,13 @@ import Cuentas from '../json/cuentas.json';
 })
 
 export class UsuariosService {
-  public usuarios: Usuario[] = Cuentas;
+  public usuarios: Usuario[];
+  public usuariosUser: Usuario[];
+
+  constructor() {
+    this.usuarios = Cuentas;
+    this.usuariosUser = this.getRolUser();
+  }
 
   getUsuarios(): Usuario[]{
     return this.usuarios;
@@ -28,5 +34,27 @@ export class UsuariosService {
 
   eliminarUsuario(usuarioEliminar: Usuario) {
     this.usuarios = this.usuarios.filter(usuario => usuario !== usuarioEliminar);
+  }
+
+  getRolUser(){
+    const rolUser: Usuario[] = [];
+    this.usuarios.forEach(usuario => {
+      if (usuario.rol == 'user') {
+        rolUser.push(usuario);
+      }
+    })
+    return rolUser;
+  }
+
+  getNoAgregados(usuarioLogged) {
+    const noAgregados: Usuario[] = []
+    this.usuarios.forEach(usuario => {
+      if (usuario.correo !== usuarioLogged.correo && usuario.rol == usuarioLogged.rol) {
+        if (!usuarioLogged.amigos.includes(usuario.correo)) {
+          noAgregados.push(usuario)
+        }
+      }
+    })
+    return noAgregados;
   }
 }
