@@ -3,52 +3,75 @@
 <body class="bg-gradiente">
     <navbar></navbar>
     <app-panel-lateral-perfil></app-panel-lateral-perfil>
-    <div class="container-sm">
-        <form class="text-color mt-3" [formGroup]="actualizarDatosForm" (ngSubmit)="actualizarDatos()">
-            <h5>
-                <i class="bi bi-gear-wide-connected me-2"></i>
-                Ajustes del usuario
-            </h5>
-            <div class="input-group">
-              <span class="input-group-text">Email <i class="bi bi-envelope ms-2"></i></span>
-              <input type="email" class="form-control shadow-sm" id="email" value="{{ logged.correo }}" disabled>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 text-center">
+                <div class="card bg-transparent text-color border-color mt-3">
+                    <div class="text-center m-2">
+                        <ul class="list-group m-2">
+                            <li class="list-group-item"><img src="{{ logged.avatar }}" width="150" alt="perfil"></li>
+                        </ul>
+                    </div>
+                    <h5>Datos</h5>
+                    <div class="card-body text-center">
+                        <ul class="list-group">
+                            <li class="list-group-item">Nombre: {{ logged.nombre }}</li>
+                            <li class="list-group-item">Apellidos: {{ logged.apellidos }}</li>
+                            <li class="list-group-item">Edad: {{ logged.edad }}</li>
+                            <li class="list-group-item">Rol: {{ logged.rol }}</li>
+                            <li class="list-group-item">{{ logged.descripcion }}</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="form-group mt-2">
-                <small>Para cambiar tu email, contacta con un administrador.</small>
+            <div class="col-10">
+                <form class="text-color mt-3" [formGroup]="actualizarDatosForm" (ngSubmit)="actualizarDatos()">
+                    <h5>
+                        <i class="bi bi-gear-wide-connected me-2"></i>
+                        Ajustes del usuario
+                    </h5>
+                    <div class="input-group">
+                      <span class="input-group-text">Email <i class="bi bi-envelope ms-2"></i></span>
+                      <input type="email" class="form-control shadow-sm" id="email" value="{{ logged.correo }}" disabled>
+                    </div>
+                    <div class="form-group mt-2">
+                        <small>Para cambiar tu email, contacta con un administrador.</small>
+                    </div>
+                    <div class="input-group mt-2">
+                        <span class="input-group-text">Nombre y apellidos<i class="bi bi-person-lines-fill ms-2"></i></span>
+                        <input type="text" formControlName='nombre' name="nombre" class="form-control shadow-sm" value="{{ logged.nombre }}">
+                        <input type="text" formControlName='apellidos' name="apellidos" class="form-control shadow-sm" value="{{ logged.apellidos }}">
+                    </div>
+                    <div class="input-group mt-2">
+                        <span class="input-group-text">Edad<i class="bi bi-123 ms-2"></i></span>
+                        <input type="number" formControlName='edad' name="edad" class="form-control shadow-sm" value="{{ logged.edad }}">
+                    </div>
+                    <div class="input-group mt-2">
+                        <span class="input-group-text">Descripción<i class="bi bi-pencil-fill ms-2"></i></span>
+                        <input type="text" formControlName='descripcion' name="descripcion" class="form-control shadow-sm" value="{{ logged.descripcion }}">
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-color mt-3">Actualizar datos</button>
+                    </div>
+                </form>
+                <form class="text-color mt-2" [formGroup]="actualizarPasswordForm" (ngSubmit)="actualizarPassword()">
+                    <h5>
+                        <i class="bi bi-key-fill"></i>
+                        Cambio de contraseña
+                    </h5>
+                    <div class="input-group">
+                        <span class="input-group-text">Contraseña<i class="bi bi-key ms-2"></i></span>
+                        <input type="password" formControlName='password' class="form-control shadow-sm" id="password" name="password">
+                    </div>
+                    <div class="input-group mt-2">
+                        <span class="input-group-text">Repetir contraseña<i class="bi bi-key ms-2"></i></span>
+                        <input type="password" formControlName='passwordRepetir' class="form-control shadow-sm" id="passwordRepetir" name="passwordRepetir">
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-color mt-3">Cambiar contraseña</button>
+                    </div>
+                </form>
             </div>
-            <div class="input-group mt-2">
-                <span class="input-group-text">Nombre y apellidos<i class="bi bi-person-lines-fill ms-2"></i></span>
-                <input type="text" formControlName='nombre' name="nombre" class="form-control shadow-sm" value="{{ logged.nombre }}">
-                <input type="text" formControlName='apellidos' name="apellidos" class="form-control shadow-sm" value="{{ logged.apellidos }}">
-            </div>
-            <div class="input-group mt-2">
-                <span class="input-group-text">Edad<i class="bi bi-123 ms-2"></i></span>
-                <input type="number" formControlName='edad' name="edad" class="form-control shadow-sm" value="{{ logged.edad }}">
-            </div>
-            <div class="input-group mt-2">
-                <span class="input-group-text">Descripción<i class="bi bi-pencil-fill ms-2"></i></span>
-                <input type="text" formControlName='descripcion' name="descripcion" class="form-control shadow-sm" value="{{ logged.descripcion }}">
-            </div>
-            <div class="d-grid">
-                <button type="submit" class="btn btn-outline-color mt-3">Actualizar datos</button>
-            </div>
-          </form>
-          <form class="text-color mt-2" >
-            <h5>
-                <i class="bi bi-key-fill"></i>
-                Cambio de contraseña
-            </h5>
-            <div class="input-group">
-                <span class="input-group-text">Contraseña<i class="bi bi-key ms-2"></i></span>
-                <input type="email" class="form-control shadow-sm" id="pass" name="pass">
-              </div>
-              <div class="input-group mt-2">
-                <span class="input-group-text">Repetir contraseña<i class="bi bi-key ms-2"></i></span>
-                <input type="email" class="form-control shadow-sm" id="passRepetir" name="passRepetir">
-              </div>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-outline-color mt-3">Cambiar contraseña</button>
-            </div>
-          </form>
+        </div>
     </div>
 </body>
