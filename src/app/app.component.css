@@ -110,3 +110,9 @@
     color: var(--col);
     border-color: var(--col);
 }
+
+.list-group-item {
+    background-color: transparent !important;
+    color: var(--col) !important;
+    border-color: var(--col) !important;
+}
