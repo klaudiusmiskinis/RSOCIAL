@@ -5,7 +5,7 @@
     <app-panel-lateral-perfil></app-panel-lateral-perfil>
 
     <!-- SWIPER AMIGOS -->
-    <div *ngIf="amigos.length > 0" class="container-sm mt-2">
+    <div *ngIf="amigos" class="container-sm mt-2">
         <h6 class="text-color">{{ amigos.length }} Amigos</h6>
         <swiper *ngIf="show" class="swiper-container text-color" fxFlex="auto" [config]="config" [disabled]="disabled" (indexChange)="onIndexChange($event)" (swiperTransitionStart)="onSwiperEvent('transitionStart')" (swiperTransitionEnd)="onSwiperEvent('transitionEnd')">
             <div *ngFor="let amigo of amigos" class="swiper-slide">
