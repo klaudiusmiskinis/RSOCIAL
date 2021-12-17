@@ -13,15 +13,15 @@ import { SwiperOptions } from 'swiper';
 
 
 export class HomeComponent implements OnInit {
+  /*ATRIBUTOS*/
   public router: Router;
   public route: ActivatedRoute;
   public usuarios;
   public logged: Usuario;
   public amigos;
+  public noAgregados: Usuario[];
   public disabled: boolean = false;
-  public show: boolean = true;
-  public type: string = 'component';
-  public config: SwiperOptions = {
+  public configUno: SwiperOptions = {
     a11y: { enabled: true },
     direction: 'horizontal',
     slidesPerView: 1,
@@ -34,14 +34,31 @@ export class HomeComponent implements OnInit {
       delay: 3000,
     }
   };
+  public configDos: SwiperOptions = {
+    a11y: { enabled: true },
+    direction: 'horizontal',
+    slidesPerView: 3,
+    keyboard: true,
+    mousewheel: true,
+    scrollbar: false,
+    navigation: false,
+    pagination: false,
+    autoplay: {
+      delay: 3000,
+    }
+  };
 
+  /*CONSTRUCTOR*/
   constructor(Router: Router, ActivatedRoute: ActivatedRoute, UsuariosService: UsuariosService) {
     this.router = Router;
     this.route = ActivatedRoute
     this.usuarios = UsuariosService;
     this.logged = this.usuarios.findUsuarioByEmail(localStorage.getItem('user'))[0];
+    this.amigos = [];
+    this.noAgregados = this.usuarios.getNoAgregados(this.logged)
   }
 
+  /*MÉTODOS*/
   ngOnInit() {
     if (!this.logged) this.router.navigate(['login']);
     else {
@@ -51,11 +68,31 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  agregarAmigo(email) {
+    let agregado: Boolean = false;
+    this.logged.amigos.forEach(amigo => {
+      if (amigo !== email) {
+        this.logged.amigos.push(email)
+        agregado = true;
+      }
+    })
+    if (agregado) {
+      this.amigos.push(this.usuarios.findUsuarioByEmail(email)[0])
+    }
+    this.noAgregados = this.usuarios.getNoAgregados(this.logged)
+    this.onSwiper('agregado');
+  }
+
+  /* SWIPER */
   public onSwiperEvent(event: string): void {
-    
+    console.log(event)
   }
 
   public onIndexChange(index: number): void {
+    console.log(index)
   }
 
+  public onSwiper(swiper: string): void {
+    
+  }
 }
