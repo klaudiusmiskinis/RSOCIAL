@@ -8,18 +8,25 @@ import Cuentas from '../json/cuentas.json';
 
 export class UsuariosService {
   public usuarios: Usuario[] = Cuentas;
-  
-  addUsuario(usuario: Usuario): void {
-    this.usuarios.push(usuario)
-  }
 
   getUsuarios(): Usuario[]{
     return this.usuarios;
   }
 
-  findUsuarioByEmail(email) {
+  findUsuarioByEmail(email: string): Usuario[] {
     return this.usuarios.filter(usuario => usuario.correo === email);
   }
 
+  addUsuario(usuario: Usuario): void {
+    this.usuarios.push(usuario)
+  }
 
+  actualizarUsuario(usuarioCambiar: Usuario) {
+    this.usuarios = this.usuarios.filter(usuario => usuario !== usuarioCambiar);
+    this.usuarios.push(usuarioCambiar)
+  }
+
+  eliminarUsuario(usuarioEliminar: Usuario) {
+    this.usuarios = this.usuarios.filter(usuario => usuario !== usuarioEliminar);
+  }
 }
