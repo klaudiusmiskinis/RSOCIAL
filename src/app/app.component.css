@@ -119,3 +119,7 @@
 .ellipsis {
     text-overflow: ellipsis;
 }
+
+.table {
+    color: var(--col) !important;
+}
