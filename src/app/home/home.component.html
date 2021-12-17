@@ -6,7 +6,7 @@
 
     <!-- SWIPER AMIGOS -->
     <div *ngIf="amigos.length > 0 && logged.rol == 'user'" class="container-fluid mt-2">
-        <h6 class="text-color">{{ amigos.length }} Amigos</h6>
+        <h6 class="text-color"><i class="bi bi-people-fill mx-2"></i>{{ amigos.length }} Amigos</h6>
         <swiper class="swiper-container text-color" fxFlex="auto" [config]="configUno" [disabled]="disabled" (swiper)="onSwiper('evento')" (indexChange)="onIndexChange($event)" (swiperTransitionStart)="onSwiperEvent($event)" (swiperTransitionEnd)="onSwiperEvent($event)">
             <div *ngFor="let amigo of amigos" class="swiper-slide">
                 <div class="card bg-transparent border-color text-center">
