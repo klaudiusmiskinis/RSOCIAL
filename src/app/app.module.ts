@@ -16,6 +16,7 @@ import { PrivacidadComponent } from './privacidad/privacidad.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { PanelLateralPerfilComponent } from './panel-lateral-perfil/panel-lateral-perfil.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     PerfilComponent,
     PanelLateralPerfilComponent,
     NavbarComponent,
+    AdminComponent,
   ],
   imports: [
     ReactiveFormsModule,
