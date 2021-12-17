@@ -96,10 +96,15 @@
     transition: var(--transicion);
 }
 
+.list-group-item {
+    background-color: transparent !important;
+    color: var(--col) !important;
+    border-color: var(--col) !important;
+}
+
 .icono {
     font-size: 1.3rem;
 }
-
 
 .icono-sm {
     font-size: 1.1rem;
@@ -111,8 +116,6 @@
     border-color: var(--col);
 }
 
-.list-group-item {
-    background-color: transparent !important;
-    color: var(--col) !important;
-    border-color: var(--col) !important;
+.ellipsis {
+    text-overflow: ellipsis;
 }
