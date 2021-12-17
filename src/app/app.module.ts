@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'ngx-swiper-wrapper';
+import { AgGridModule } from 'ag-grid-angular';
 
 /* IMPORTANDO COMPONENTES */
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { AdminComponent } from './admin/admin.component';
     AdminComponent,
   ],
   imports: [
+    AgGridModule.withComponents([]),
     ReactiveFormsModule,
     BrowserModule,
     SwiperModule,
