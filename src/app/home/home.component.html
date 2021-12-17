@@ -4,6 +4,30 @@
     <navbar></navbar>
     <app-panel-lateral-perfil></app-panel-lateral-perfil>
 
+    <div class="container-fluid">
+        <div class="row justify-content-md-center text-color text-center">
+            <div class="col-md-8 mt-2">
+                <div class="card bg-transparent border-0">
+                    <div class="card-body">
+                        <h3>RSOCIAL</h3>
+                        <h6>¡Estamos contentos de volver a verte por aquí, {{ logged.nombre }}!</h6>
+                        <div class="row mt-4">
+                            <div class="col d-grid">
+                                <button class="btn btn-color"><i class="bi bi-person-fill me-2"></i>Perfil</button>
+                            </div>
+                            <div class="col d-grid">
+                                <button class="btn btn-color"><i class="bi bi-people-fill me-2"></i>Chat</button>
+                            </div>
+                            <div class="col d-grid">
+                                <button class="btn btn-color"><i class="bi bi-gear-wide-connected me-2"></i>Preferencias</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- SWIPER AMIGOS -->
     <div *ngIf="amigos.length > 0 && logged.rol == 'user'" class="container-fluid mt-2">
         <h6 class="text-color"><i class="bi bi-people-fill mx-2"></i>{{ amigos.length }} Amigos</h6>
