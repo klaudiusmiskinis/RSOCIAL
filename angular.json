@@ -99,8 +99,10 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/swiper/swiper-bundle.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "./node_modules/swiper/swiper-bundle.css",
+              "node_modules/ag-grid-community/dist/styles/ag-theme-balham.css",
+              "node_modules/~ag-grid-community/dist/styles/ag-grid.css",
               "src/styles.css"
             ],
             "scripts": [
