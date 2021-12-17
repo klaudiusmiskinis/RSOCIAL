@@ -53,7 +53,6 @@ export class PerfilComponent implements OnInit {
   }
 
   async actualizarPassword() {
-    console.log(this.logged.password)
     let password = this.actualizarPasswordForm.value.password;
     let passwordRepetir = this.actualizarPasswordForm.value.passwordRepetir;
     if (password === passwordRepetir && passwordRepetir.length > 4) {
