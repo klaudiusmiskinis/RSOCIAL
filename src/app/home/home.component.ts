@@ -85,11 +85,9 @@ export class HomeComponent implements OnInit {
 
   /* SWIPER */
   public onSwiperEvent(event: string): void {
-    console.log(event)
   }
 
   public onIndexChange(index: number): void {
-    console.log(index)
   }
 
   public onSwiper(swiper: string): void {
