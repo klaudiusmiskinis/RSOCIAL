@@ -6,7 +6,7 @@
 
     <div class="container-fluid">
         <div class="row justify-content-md-center text-color text-center">
-            <div class="col-md-8 mt-2">
+            <div class="col-md-8 my-2">
                 <div class="card bg-transparent border-0">
                     <div class="card-body">
                         <h3>RSOCIAL</h3>
@@ -29,7 +29,7 @@
     </div>
 
     <!-- SWIPER AMIGOS -->
-    <div *ngIf="amigos.length > 0 && logged.rol == 'user'" class="container-fluid mt-2">
+    <div *ngIf="amigos.length > 0 && logged.rol == 'user'" class="container-fluid my-2">
         <h6 class="text-color"><i class="bi bi-people-fill mx-2"></i>{{ amigos.length }} Amigos</h6>
         <swiper class="swiper-container text-color" fxFlex="auto" [config]="configUno" [disabled]="disabled" (swiper)="onSwiper('evento')" (indexChange)="onIndexChange($event)" (swiperTransitionStart)="onSwiperEvent($event)" (swiperTransitionEnd)="onSwiperEvent($event)">
             <div *ngFor="let amigo of amigos" class="swiper-slide">
