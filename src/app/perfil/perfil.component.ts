@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { UsuariosService } from '../services/usuarios.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsuariosService } from '../services/usuarios.service';
+import { Usuario } from '../class/usuario';
+import { Router } from '@angular/router';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
-  selector: 'app-perfil',
+  selector: 'perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['../app.component.css']
 })
 
 export class PerfilComponent implements OnInit {
   public actualizarDatosForm: FormGroup;
+  public actualizarPasswordForm: FormGroup;
+  public logged: Usuario;
   public router;
-  public logged;
   private usuarios;
 
   constructor(Router: Router, usuariosService: UsuariosService, private formBuilder: FormBuilder) {
@@ -26,6 +29,10 @@ export class PerfilComponent implements OnInit {
       edad: [this.logged.edad, Validators.required],
       descripcion: [this.logged.descripcion, Validators.required]
     });
+    this.actualizarPasswordForm = this.formBuilder.group({
+      password: ['', Validators.required],
+      passwordRepetir: ['', Validators.required]
+    })
   }
 
   ngOnInit(): void {
@@ -45,4 +52,13 @@ export class PerfilComponent implements OnInit {
     if (actualizar) this.usuarios.actualizarUsuario(this.logged)
   }
 
+  async actualizarPassword() {
+    console.log(this.logged.password)
+    let password = this.actualizarPasswordForm.value.password;
+    let passwordRepetir = this.actualizarPasswordForm.value.passwordRepetir;
+    if (password === passwordRepetir && passwordRepetir.length > 4) {
+      this.logged.password = await bcrypt.hashSync(password);
+      this.usuarios.actualizarUsuario(this.logged);
+    }
+  }
 }
