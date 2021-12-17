@@ -4,7 +4,7 @@
     <navbar></navbar>
     <app-panel-lateral-perfil></app-panel-lateral-perfil>
     <div class="container-sm">
-        <form class="text-color mt-3">
+        <form class="text-color mt-3" [formGroup]="actualizarDatosForm" (ngSubmit)="actualizarDatos()">
             <h5>
                 <i class="bi bi-gear-wide-connected me-2"></i>
                 Ajustes del usuario
@@ -18,22 +18,22 @@
             </div>
             <div class="input-group mt-2">
                 <span class="input-group-text">Nombre y apellidos<i class="bi bi-person-lines-fill ms-2"></i></span>
-                <input type="text" name="nombre" class="form-control shadow-sm" value="{{ logged.nombre }}">
-                <input type="text" name="apellidos" class="form-control shadow-sm" value="{{ logged.apellidos }}">
+                <input type="text" formControlName='nombre' name="nombre" class="form-control shadow-sm" value="{{ logged.nombre }}">
+                <input type="text" formControlName='apellidos' name="apellidos" class="form-control shadow-sm" value="{{ logged.apellidos }}">
             </div>
             <div class="input-group mt-2">
                 <span class="input-group-text">Edad<i class="bi bi-123 ms-2"></i></span>
-                <input type="number" name="nombre" class="form-control shadow-sm" value="{{ logged.edad }}">
+                <input type="number" formControlName='edad' name="edad" class="form-control shadow-sm" value="{{ logged.edad }}">
             </div>
             <div class="input-group mt-2">
                 <span class="input-group-text">Descripción<i class="bi bi-pencil-fill ms-2"></i></span>
-                <input type="text" name="descripcion" class="form-control shadow-sm" value="{{ logged.descripcion }}">
+                <input type="text" formControlName='descripcion' name="descripcion" class="form-control shadow-sm" value="{{ logged.descripcion }}">
             </div>
             <div class="d-grid">
-                <button type="submit" class="btn btn-outline-color mt-3" click="actualizar()">Actualizar datos</button>
+                <button type="submit" class="btn btn-outline-color mt-3">Actualizar datos</button>
             </div>
           </form>
-          <form class="text-color mt-2">
+          <form class="text-color mt-2" >
             <h5>
                 <i class="bi bi-key-fill"></i>
                 Cambio de contraseña
