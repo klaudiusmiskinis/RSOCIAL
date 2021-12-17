@@ -5,9 +5,9 @@
     <app-panel-lateral-perfil></app-panel-lateral-perfil>
 
     <!-- SWIPER AMIGOS -->
-    <div *ngIf="amigos" class="container-sm mt-2">
+    <div *ngIf="amigos.length > 0 && logged.rol == 'user'" class="container-fluid mt-2">
         <h6 class="text-color">{{ amigos.length }} Amigos</h6>
-        <swiper *ngIf="show" class="swiper-container text-color" fxFlex="auto" [config]="config" [disabled]="disabled" (indexChange)="onIndexChange($event)" (swiperTransitionStart)="onSwiperEvent('transitionStart')" (swiperTransitionEnd)="onSwiperEvent('transitionEnd')">
+        <swiper class="swiper-container text-color" fxFlex="auto" [config]="configUno" [disabled]="disabled" (swiper)="onSwiper('evento')" (indexChange)="onIndexChange($event)" (swiperTransitionStart)="onSwiperEvent($event)" (swiperTransitionEnd)="onSwiperEvent($event)">
             <div *ngFor="let amigo of amigos" class="swiper-slide">
                 <div class="card bg-transparent border-color text-center">
                     <div class="card-body mb-3" fxLayout="column" fxLayoutAlign="center">
@@ -18,10 +18,28 @@
             </div>
         </swiper>
     </div>
+
     <!-- DESCUBRIR -->
-    <div class="container-sm">
+    <div class="container-fluid text-color mt-2">
         <div class="row">
-            <div class="col"></div>
+            <div class="col" *ngIf="logged.rol == 'user'">
+                <h6><i class="bi bi-person-plus-fill mx-2"></i>Conoce a nuevas personas</h6>
+                <swiper class="swiper-container text-color" fxFlex="auto" [config]="configDos" [disabled]="disabled" (swiper)="onSwiper('evento')" (indexChange)="onIndexChange($event)" (swiperTransitionStart)="onSwiperEvent($event)" (swiperTransitionEnd)="onSwiperEvent($event)">
+                    <div *ngFor="let usuario of noAgregados" class="swiper-slide">
+                        <div class="card bg-transparent border-color text-center m-1">
+                            <div class="d-flex p-2">
+                                <div class="mt-1 mx-2">
+                                    <img src="{{ usuario.avatar }}" class="rounded-circle" width="20">
+                                </div>
+                                <div class="mt-1">{{ usuario.nombre + ' ' + usuario.apellidos }}</div>
+                                <div class="ms-auto">
+                                    <button class="btn btn-color" (click)="agregarAmigo(usuario.correo)">Agregar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </swiper>
+            </div>
         </div>
     </div>
 
