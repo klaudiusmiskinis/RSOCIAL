@@ -35,6 +35,13 @@ export class UsuariosService {
   eliminarUsuario(usuarioEliminar: Usuario) {
     this.usuarios = this.usuarios.filter(usuario => usuario !== usuarioEliminar);
   }
+  
+  agregarAmigo(amigo, usuario) {
+    const logged = this.findUsuarioByEmail(usuario)[0]
+    logged.amigos.push(amigo)
+    this.actualizarUsuario(logged)
+    return this.findUsuarioByEmail(usuario)[0]
+  }
 
   getRolUser(){
     const rolUser: Usuario[] = [];
