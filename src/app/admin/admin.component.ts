@@ -10,23 +10,22 @@ import { ColDef } from 'ag-grid-community';
 
 export class AdminComponent implements OnInit {
   public usuarios;
-  public columnas: ColDef[] = [
-    {headerName: 'Nombre', field: 'nombre'},
-    {headerName: 'Apellidos', field: 'apellidos'},
-    {headerName: 'Correo', field: 'correo'},
-    {headerName: 'Edad', field: 'edad'},
-    {headerName: 'Avatar', field: 'avatar'},
-    {headerName: 'Password', field: 'password'},
-    {headerName: 'Descripción', field: 'descripcion'},
-    {headerName: 'Rol', field: 'rol'},
-    {headerName: 'Amigos', field: 'amigos'},
+  public gridColumnas;
+  public columnas = [
+    {headerName: 'Nombre', field: 'nombre', filter: 'agTextColumnFilter', sortable: true},
+    {headerName: 'Apellidos', field: 'apellidos', sortable: true},
+    {headerName: 'Correo', field: 'correo', sortable: true},
+    {headerName: 'Edad', field: 'edad', sortable: true, width: 60},
+    {headerName: 'Avatar', field: 'avatar', sortable: true},
+    {headerName: 'Descripción', field: 'descripcion', sortable: true},
+    {headerName: 'Rol', field: 'rol', sortable: true, width: 55},
+    {headerName: 'Amigos', field: 'amigos', sortable: true}
   ]
-  
+
   constructor(usuariosService: UsuariosService) {
     this.usuarios = usuariosService.getUsuarios();
   }
 
   ngOnInit(): void {
-
   }
 }
