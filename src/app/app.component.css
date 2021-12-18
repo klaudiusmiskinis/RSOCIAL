@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
-@import '~swiper/swiper-bundle.min.css';
 
 :host {
     --dark: #212529;
@@ -17,6 +15,7 @@
     color: var(--col-hover);
     border: 1px solid var(--col);
 }
+
 
 *, html, body {
     font-family: 'Montserrat', sans-serif;
