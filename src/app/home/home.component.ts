@@ -16,8 +16,9 @@ export class HomeComponent implements OnInit {
   /*ATRIBUTOS*/
   public router: Router;
   public route: ActivatedRoute;
-  public usuarios;
-  public logged: Usuario;
+  public usuarios: Usuario[];
+  public logged: Usuario;ç
+  public servicio;
   public amigos;
   public noAgregados: Usuario[];
   public disabled: boolean = false;
@@ -52,45 +53,35 @@ export class HomeComponent implements OnInit {
   constructor(Router: Router, ActivatedRoute: ActivatedRoute, UsuariosService: UsuariosService) {
     this.router = Router;
     this.route = ActivatedRoute
-    this.usuarios = UsuariosService;
-    this.logged = this.usuarios.findUsuarioByEmail(localStorage.getItem('user'))[0];
+    this.servicio = UsuariosService;
+    this.logged = this.servicio.findUsuarioByEmail(localStorage.getItem('user'))[0];
+    this.usuarios = this.servicio.getUsuarios();
+    this.noAgregados = this.servicio.getNoAgregados(this.logged)
     this.amigos = [];
-    this.noAgregados = this.usuarios.getNoAgregados(this.logged)
   }
 
   /*MÉTODOS*/
-  ngOnInit() {
+  public ngOnInit() {
     if (!this.logged) this.router.navigate(['login']);
     else {
       this.logged.amigos.forEach(amigo => {
-        this.amigos.push(this.usuarios.findUsuarioByEmail(amigo)[0]);
+        this.amigos.push(this.servicio.findUsuarioByEmail(amigo)[0]);
       })
     }
   }
 
-  agregarAmigo(email) {
-    let agregado: Boolean = false;
+  public agregarAmigo(email) {
+    this.servicio.agregarAmigo(email, this.logged.correo)
+    this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0]
+    this.noAgregados = this.servicio.getNoAgregados(this.logged)
+    this.swiperAmigos();
+    console.log(this.servicio.findUsuarioByEmail(this.logged.correo)[0])
+  }
+
+  public swiperAmigos() {
+    this.amigos = []
     this.logged.amigos.forEach(amigo => {
-      if (amigo !== email) {
-        this.logged.amigos.push(email)
-        agregado = true;
-      }
+      this.amigos.push(this.servicio.findUsuarioByEmail(amigo)[0]);
     })
-    if (agregado) {
-      this.amigos.push(this.usuarios.findUsuarioByEmail(email)[0])
-    }
-    this.noAgregados = this.usuarios.getNoAgregados(this.logged)
-    this.onSwiper('agregado');
-  }
-
-  /* SWIPER */
-  public onSwiperEvent(event: string): void {
-  }
-
-  public onIndexChange(index: number): void {
-  }
-
-  public onSwiper(swiper: string): void {
-    
   }
 }
