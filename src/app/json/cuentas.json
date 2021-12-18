@@ -58,8 +58,8 @@
         ]
     },
     {
-        "nombre": "admin",
-        "apellidos": "admin",
+        "nombre": "Admin",
+        "apellidos": "Admin",
         "correo": "admin@rsocial.com",
         "edad": 0,
         "avatar": "/assets/img/crown.png",
