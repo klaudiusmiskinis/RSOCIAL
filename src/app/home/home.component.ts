@@ -7,8 +7,7 @@ import { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['../app.component.css']
+  templateUrl: './home.component.html'
 })
 
 
