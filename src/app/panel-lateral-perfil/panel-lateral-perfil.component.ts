@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panel-lateral-perfil',
-  templateUrl: './panel-lateral-perfil.component.html',
-  styleUrls: ['../app.component.css']
+  templateUrl: './panel-lateral-perfil.component.html'
 })
 export class PanelLateralPerfilComponent {
   /* Atributos */
