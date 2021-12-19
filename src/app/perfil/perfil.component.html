@@ -5,15 +5,14 @@
     <app-panel-lateral-perfil></app-panel-lateral-perfil>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 text-center">
-                <div class="card bg-transparent text-color border-color mt-3">
+            <div class="col-lg-4 text-center">
+                <div class="card bg-transparent text-color border-color mt-3" id="cardPerfil">
                     <div class="text-center m-2">
                         <ul class="list-group m-2">
-                            <li class="list-group-item"><img src="{{ logged.avatar }}" class="img-fluid" width="150" alt="perfil"></li>
-                            <li *ngIf="ruta" class="list-group-item"><img src="{{ ruta }}" class="img-fluid" width="150" alt="perfil"></li>
+                            <li class="list-group-item"><img src="{{ logged.avatar }}" class="img-fluid" width="100" alt="perfil"></li>
+                            <li *ngIf="ruta" class="list-group-item"><img src="{{ ruta }}" class="img-fluid" width="100" alt="perfil"></li>
                         </ul>
                     </div>
-                    <h5>Datos</h5>
                     <div class="card-body text-center">
                         <ul class="list-group">
                             <li class="list-group-item">Nombre: {{ logged.nombre }}</li>
@@ -23,18 +22,18 @@
                             <li class="list-group-item">{{ logged.descripcion }}</li>
                         </ul>
                     </div>
+                    <form [formGroup]="imageForm" class="row mx-2">
+                        <input type="file" formControlName='foto' class="hidden" accept="image/*" id="foto" (change)="previsualizar($event)">
+                        <div class="d-grid col">
+                            <label type="button" class="btn btn-outline-color" for="foto"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Cambiar foto</label>
+                        </div>
+                        <div *ngIf="ruta" class="d-grid col">
+                            <label class="btn btn-outline-color" (click)="aplicarFoto()">Aplicar foto</label>
+                        </div>
+                    </form>
                 </div>
-                <form [formGroup]="imageForm" class="row my-2">
-                    <input type="file" formControlName='foto' class="hidden" accept="image/*" id="foto" (change)="previsualizar($event)">
-                    <div class="d-grid col">
-                        <label type="button" class="btn btn-outline-color" for="foto"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Cambiar foto</label>
-                    </div>
-                    <div *ngIf="ruta" class="d-grid col">
-                        <label class="btn btn-outline-color" (click)="aplicarFoto()">Aplicar foto</label>
-                    </div>
-                </form>
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-8" id="formularioInformacion">
                 <form class="text-color mt-3" [formGroup]="actualizarDatosForm" (ngSubmit)="actualizarDatos()">
                     <h5>
                         <i class="bi bi-gear-wide-connected me-2"></i>
