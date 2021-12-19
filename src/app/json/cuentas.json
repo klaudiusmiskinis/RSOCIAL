@@ -62,7 +62,7 @@
         "apellidos": "Admin",
         "correo": "admin@rsocial.com",
         "edad": 0,
-        "avatar": "/assets/img/crown.png",
+        "avatar": "/assets/img/icono.png",
         "password": "$2a$10$W69P914bszpEG/IwJDq92.Qr7f8RzogOrcinjFstUs.iDOt6SX2FC",
         "descripcion": "Me llamo admin y soy el admin",
         "rol": "admin",
