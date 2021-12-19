@@ -1,9 +1,38 @@
+<title>Administrador</title>
 <body class="bg-gradiente">
     <navbar></navbar>
     <app-panel-lateral-perfil></app-panel-lateral-perfil>
 
     <div class="container-fluid text-color mt-2">
-        <h4>
+
+        <div class="row">
+            <div class="col">
+                <div class="card border-color bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">Title</h5>
+                        <p class="card-text">Content</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-color bg-dark">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Usuarios</h5>
+                        <p class="card-text">Cantidad: {{ usuarios.length }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card border-color bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">Title</h5>
+                        <p class="card-text">Content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="mt-2">
             <i class="bi bi-wrench me-2"></i>Panel de administrador
         </h4>
     
@@ -11,15 +40,16 @@
             <p><i class="bi bi-info-square-fill me-2"></i>Para editar los datos de un usuario simplemente con hacer click en un campo y despues 'Enter' ya se aplicaran los cambios.</p>
             <ag-grid-angular 
             id="usuariosAdminTabla"
-            class="ag-theme-balham-dark"
+            class="ag-theme-balham-dark border border-color"
             [rowSelection]="rowSelection"
             [defaultColDef]="defaultColDef"
             [animateRows]="true"
             [rowData]="usuarios" 
             [columnDefs]="columnas"
             (gridReady)="tablaCargada($event)"
+            (dragStopped)="columnaMovida($event)"
             [singleClickEdit]="true"
-            (selectionChanged)="onSelectionChanged($event)"
+            (selectionChanged)="seleccionarFila($event)"
             (cellValueChanged)="campoCambiando($event)">
             </ag-grid-angular>
         </div>
@@ -29,10 +59,11 @@
                 <h5>Opciones</h5>
                 <p><i class="bi bi-info-square-fill me-2"></i>El usuario administrador se puede editar pero no eliminar.</p>
                 <div class="d-flex col-auto">
-                    <button *ngIf='seleccionado.correo != "admin@rsocial.com"' class="btn btn-danger me-2" (click)="eliminarRow()">Eliminar</button>
+                    <button *ngIf='seleccionado.correo != "admin@rsocial.com"' class="btn btn-danger me-2" (click)="eliminarFila()">Eliminar</button>
                 </div>
             </div>
         </div>
+
     </div>
 
 
