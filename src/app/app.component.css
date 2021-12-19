@@ -119,3 +119,7 @@
 .table {
     color: var(--col) !important;
 }
+
+.hidden {
+    display: none;
+}
