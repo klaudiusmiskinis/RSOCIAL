@@ -1,6 +1,19 @@
-@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import "~ag-grid-community/dist/styles/ag-theme-balham-dark.min.css";
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
 
+
+:root {
+    --dark: #212529;
+    --dark-hover: #4e4e4e;
+    --dark-low: #949393;
+    --col-hover: #0a6679;
+    --col: #0dcaf0;
+    --b: #fff;
+    --transicion: .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+/* SCROLLBAR */
 ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -8,7 +21,136 @@
     background: transparent;
 }
 
+/* SCROLLBAR */
 ::-webkit-scrollbar-thumb {
     background: #0dcaf0;
     border-radius: 10px;
+}
+
+/* SELECTION */
+::selection {
+    color: var(--dark-low);
+    border: 1px solid var(--col);
+}
+
+/* DOCUMENT, HTML, BODY */
+*, html, body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ID CONTENEDOR */
+#contenedor {
+    margin-top: 4rem;
+}
+
+/* BACKGROUNDS */
+.bg-gradiente {
+    background: rgb(97,97,97) !important;
+    background: linear-gradient(360deg, rgba(97,97,97,1) 28%, #212529 100%) !important;
+}
+
+.bg-danger {
+    background-color: rgb(206, 34, 34) !important;
+}
+
+.bg-color {
+    background-color: var(--col) !important;
+}
+
+/* BORDER-COLOR */ 
+.border-color {
+    border-color: var(--col) !important;
+}
+
+/* BTN */
+.btn:focus {
+    box-shadow: 0 0 0 0.25rem transparent !important
+}
+
+/* BTN-COLOR */
+.btn-color {
+    background-color: var(--col) !important;
+    color: var(--dark) !important;
+}
+
+.btn-color:hover {
+    background-color: transparent !important;
+    border: 1px solid var(--col) !important;
+    color: var(--col) !important;
+}
+
+/* BTN-OUTLINE-COLOR */
+.btn-outline-color {
+    background-color: transparent !important;
+    border: 1px solid var(--col);
+    color: var(--col);
+}
+
+.btn-outline-color:hover {
+    background-color: var(--col) !important;
+    border: 1px solid var(--col);
+    color: var(--dark);
+}
+
+/* FORM CONTROL */
+.form-control {
+    border-color: transparent;
+    background-color: var(--b);
+    transition:  var(--transicion);
+}
+
+.form-control:focus {
+    border-color: var(--col);
+    transition: var(--transicion);
+}
+
+/* LINK COLOR */
+.link-color {
+    cursor: pointer;
+    color: var(--col) !important;
+    transition: var(--transicion);
+}
+
+.link-color:hover {
+    cursor: pointer;
+    color: var(--col-hover) !important;
+    transition: var(--transicion);
+}
+
+/* LIST-GROUP */
+.list-group-item {
+    background-color: transparent !important;
+    color: var(--col) !important;
+    border-color: var(--col) !important;
+}
+
+/* ICONO */
+.icono {
+    font-size: 1.3rem;
+}
+
+.icono-sm {
+    font-size: 1.1rem;
+}
+
+/* INPUT */
+.input-group-text {
+    background-color: transparent;
+    color: var(--col);
+    border-color: var(--col);
+}
+
+/* TABLE */
+.table {
+    color: var(--col) !important;
+}
+
+/* TEXT-COLOR */
+.text-color {
+    color: var(--col) !important;
+}
+
+/* HIDDEN */
+.hidden {
+    display: none;
 }
