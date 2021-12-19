@@ -1,7 +1,7 @@
-import { Component, HostListener, ViewChild } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Usuario } from '../class/usuario';
 import { UsuariosService } from '../services/usuarios.service';
-
+import { OnInit } from '@angular/core';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html'
@@ -9,7 +9,6 @@ import { UsuariosService } from '../services/usuarios.service';
 
 export class AdminComponent {
   /* Métodos */
-  public gridApi;
   public gridColumnApi;
   public defaultColDef
   public rowSelection;
@@ -17,6 +16,8 @@ export class AdminComponent {
   public usuarios;
   public servicio;
   public columnas;
+  public gridApi;
+  public stats;
 
   /* Constructor */
   constructor(usuariosService: UsuariosService) {
@@ -40,11 +41,26 @@ export class AdminComponent {
   }
 
   /* Métodos */
+  ngOnInit(){
+    let contadorUser = 0;
+    let contadorAdmin = 0;
+    for (let i = 0; i < this.usuarios.length; i++) {
+      if (this.usuarios[i].rol == 'user'){
+        contadorUser++;
+      } else if (this.usuarios[i].rol == 'admin') {
+        contadorAdmin++;
+      }
+    }
+    this.stats = {
+      users: contadorUser,
+      admins: contadorAdmin
+    }
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize(event) {
     this.columnaMovida(event);
   }
-  
   
   campoCambiando(event) {
     const selectedRows = this.gridApi.getSelectedRows();
