@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { Usuario } from '../class/usuario';
 import { UsuariosService } from '../services/usuarios.service';
-import { OnInit } from '@angular/core';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html'
