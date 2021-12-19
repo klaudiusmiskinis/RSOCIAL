@@ -6,14 +6,9 @@
         <h4>
             <i class="bi bi-wrench me-2"></i>Panel de administrador
         </h4>
-        <div class="row">
-            <div class="col"></div>
-            <div class="col"></div>
-        </div>
-    </div>
     
-    <div id="usuariosAdmin" class="container-fluid">
-        <ag-grid-angular 
+        <div id="usuariosAdmin" class="container-fluid">
+            <ag-grid-angular 
             id="usuariosAdminTabla"
             class="ag-theme-balham-dark"
             [rowSelection]="rowSelection"
@@ -25,15 +20,17 @@
             [singleClickEdit]="true"
             (selectionChanged)="onSelectionChanged($event)"
             (cellValueChanged)="campoCambiando($event)">
-        </ag-grid-angular>
-    </div>
-    
-    <div *ngIf='seleccionado' class="container-fluid text-color my-2">
-        <div class="row">
-            <div class="d-flex col-auto">
-                <button *ngIf='seleccionado.correo != "admin@rsocial.com"' class="btn btn-danger me-2" (click)="eliminarRow()">Eliminar</button>
+            </ag-grid-angular>
+        </div>
+        
+        <div *ngIf='seleccionado' class="container-fluid text-color my-2">
+            <div class="row">
+                <div class="d-flex col-auto">
+                    <button *ngIf='seleccionado.correo != "admin@rsocial.com"' class="btn btn-danger me-2" (click)="eliminarRow()">Eliminar</button>
+                </div>
             </div>
         </div>
     </div>
+
 
 </body>
