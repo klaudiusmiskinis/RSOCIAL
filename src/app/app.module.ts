@@ -18,6 +18,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { PanelLateralPerfilComponent } from './panel-lateral-perfil/panel-lateral-perfil.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdminComponent } from './admin/admin.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AdminComponent } from './admin/admin.component';
     PanelLateralPerfilComponent,
     NavbarComponent,
     AdminComponent,
+    ChatComponent,
   ],
   imports: [
     AgGridModule.withComponents([]),
