@@ -23,9 +23,17 @@
             [columnDefs]="columnas"
             (gridReady)="tablaCargada($event)"
             [singleClickEdit]="true"
+            (selectionChanged)="onSelectionChanged($event)"
             (cellValueChanged)="campoCambiando($event)">
         </ag-grid-angular>
     </div>
     
+    <div *ngIf='seleccionado' class="container-fluid text-color my-2">
+        <div class="row">
+            <div class="d-flex col-auto">
+                <button *ngIf='seleccionado.correo != "admin@rsocial.com"' class="btn btn-danger me-2" (click)="eliminarRow()">Eliminar</button>
+            </div>
+        </div>
+    </div>
 
 </body>
