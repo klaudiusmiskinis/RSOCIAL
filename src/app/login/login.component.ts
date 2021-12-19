@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
   };
 
   validacion() {
-    
     let mail = this.loginForm.value.email;
     let pass = this.loginForm.value.password;
     if (this.comprobarEmail(mail)) {
