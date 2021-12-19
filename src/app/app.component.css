@@ -12,7 +12,7 @@
 }
 
 ::selection {
-    color: var(--col-hover);
+    color: var(--dark-low);
     border: 1px solid var(--col);
 }
 
@@ -114,10 +114,6 @@
     background-color: transparent;
     color: var(--col);
     border-color: var(--col);
-}
-
-.ellipsis {
-    text-overflow: ellipsis;
 }
 
 .table {
