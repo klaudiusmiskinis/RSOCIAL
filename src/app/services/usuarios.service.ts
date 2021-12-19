@@ -40,7 +40,6 @@ export class UsuariosService {
     const logged = this.findUsuarioByEmail(usuario)[0]
     logged.amigos.push(amigo)
     this.actualizarUsuario(logged)
-    return this.findUsuarioByEmail(usuario)[0]
   }
 
   getRolUser(){
