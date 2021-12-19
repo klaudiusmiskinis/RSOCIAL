@@ -16,7 +16,7 @@
                                 <button class="btn btn-color" routerLink="/perfil"><i class="bi bi-person-fill me-2"></i>Perfil</button>
                             </div>
                             <div class="col d-grid">
-                                <button class="btn btn-color" routerLink="/chat"><i class="bi bi-chat-dots-fill me-2"></i>Chat</button>
+                                <button class="btn btn-color disabled" routerLink="/chat"><i class="bi bi-chat-dots-fill me-2 "></i>Chat</button>
                             </div>
                             <div class="col d-grid">
                                 <button class="btn btn-color disabled" routerLink="/preferencias"><i class="bi bi-gear-wide-connected me-2"></i>Preferencias</button>
@@ -34,9 +34,16 @@
         <swiper class="swiper-container text-color" fxFlex="auto" [config]="configUno" [disabled]="disabled">
             <div *ngFor="let amigo of amigos" class="swiper-slide">
                 <div class="card bg-transparent border-color text-center">
-                    <div class="card-body mb-3" fxLayout="column" fxLayoutAlign="center">
-                        <h5 class="card-title">{{ amigo.nombre + ' ' + amigo.apellidos }}</h5>
-                        <p class="card-text">{{ amigo.descripcion }}</p>
+                    <div class="card-body" fxLayout="column" fxLayoutAlign="center">
+                        <div class="d-flex">
+                            <div class="col-auto">
+                                <img src="{{ amigo.avatar }}" class="img-fluid rounded-circle shadow-sm" width="50">
+                            </div>
+                            <div class="col">
+                                <p class="card-title">{{ amigo.nombre + ' ' + amigo.apellidos }}</p>
+                                <p class="card-text">{{ amigo.descripcion }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
