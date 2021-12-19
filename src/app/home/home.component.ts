@@ -75,7 +75,9 @@ export class HomeComponent implements OnInit {
     this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0]
     this.noAgregados = this.servicio.getNoAgregados(this.logged)
     this.swiperAmigos();
-    console.log(this.servicio.findUsuarioByEmail(this.logged.correo)[0])
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate(['/home']);
+    });
   }
 
   public swiperAmigos() {
