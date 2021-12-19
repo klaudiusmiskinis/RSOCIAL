@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
 import { Usuario } from '../class/usuario';
@@ -37,6 +37,14 @@ export class PerfilComponent implements OnInit {
     this.imageForm = this.formBuilder.group({
       foto: ['', Validators.required]
     })
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    const perfil = document.getElementById('cardPerfil') as HTMLElement;
+    const formulario = document.getElementById('formularioInformacion') as HTMLElement;
+    console.log(perfil.offsetHeight, formulario.offsetHeight)
+    // perfil.style.height = formulario.offsetHeight + 'px' as string;
   }
 
   ngOnInit(): void {
