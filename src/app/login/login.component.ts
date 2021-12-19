@@ -6,8 +6,7 @@ import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['../app.component.css']
+  templateUrl: './login.component.html'
 })
 
 export class LoginComponent implements OnInit {
