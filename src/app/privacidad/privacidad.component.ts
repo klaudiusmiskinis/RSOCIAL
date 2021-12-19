@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-privacidad',
-  templateUrl: './privacidad.component.html',
-  styleUrls: ['../app.component.css']
+  templateUrl: './privacidad.component.html'
 })
 export class PrivacidadComponent implements OnInit {
   public logged;
