@@ -8,8 +8,7 @@ import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['../app.component.css']
+  templateUrl: './register.component.html'
 })
 
 export class RegisterComponent {
