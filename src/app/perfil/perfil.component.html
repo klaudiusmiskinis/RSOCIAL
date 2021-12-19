@@ -23,6 +23,13 @@
                         </ul>
                     </div>
                 </div>
+                <div class="d-grid mt-2">
+                    <div class="input-group mb-3">
+                        <input type="file" formControlName='foto' class="form-control" id="foto" (change)="previsualizar($event)">
+                        <button type="button" class="input-group-text btn btn-outline-color" for="foto">Previsualizar</button>
+                        <button type="button" class="input-group-text btn btn-outline-color" for="foto">Aplicar</button>
+                      </div>
+                </div>
             </div>
             <div class="col-8">
                 <form class="text-color mt-3" [formGroup]="actualizarDatosForm" (ngSubmit)="actualizarDatos()">
