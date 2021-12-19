@@ -14,10 +14,16 @@
     
     <div id="usuariosAdmin" class="container-fluid">
         <ag-grid-angular 
-            class="ag-theme-balham bg-dark text-color"
+            id="usuariosAdminTabla"
+            class="ag-theme-balham-dark"
+            [rowSelection]="rowSelection"
+            [defaultColDef]="defaultColDef"
             [animateRows]="true"
             [rowData]="usuarios" 
-            [columnDefs]="columnas">
+            [columnDefs]="columnas"
+            (gridReady)="tablaCargada($event)"
+            [singleClickEdit]="true"
+            (cellValueChanged)="campoCambiando($event)">
         </ag-grid-angular>
     </div>
     
