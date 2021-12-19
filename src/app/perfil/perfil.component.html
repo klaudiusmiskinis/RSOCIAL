@@ -5,11 +5,12 @@
     <app-panel-lateral-perfil></app-panel-lateral-perfil>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-4 text-center">
+            <div class="col-2 text-center">
                 <div class="card bg-transparent text-color border-color mt-3">
                     <div class="text-center m-2">
                         <ul class="list-group m-2">
                             <li class="list-group-item"><img src="{{ logged.avatar }}" class="img-fluid" width="150" alt="perfil"></li>
+                            <li *ngIf="ruta" class="list-group-item"><img src="{{ ruta }}" class="img-fluid" width="150" alt="perfil"></li>
                         </ul>
                     </div>
                     <h5>Datos</h5>
@@ -23,15 +24,17 @@
                         </ul>
                     </div>
                 </div>
-                <div class="d-grid mt-2">
-                    <div class="input-group mb-3">
-                        <input type="file" formControlName='foto' class="form-control" id="foto" (change)="previsualizar($event)">
-                        <button type="button" class="input-group-text btn btn-outline-color" for="foto">Previsualizar</button>
-                        <button type="button" class="input-group-text btn btn-outline-color" for="foto">Aplicar</button>
-                      </div>
-                </div>
+                <form [formGroup]="imageForm" class="row my-2">
+                    <input type="file" formControlName='foto' class="hidden" accept="image/*" id="foto" (change)="previsualizar($event)">
+                    <div class="d-grid col">
+                        <label type="button" class="btn btn-outline-color" for="foto"><i class="bi bi-cloud-arrow-up-fill me-2"></i>Cambiar foto</label>
+                    </div>
+                    <div *ngIf="ruta" class="d-grid col">
+                        <label class="btn btn-outline-color" (click)="aplicarFoto()">Aplicar foto</label>
+                    </div>
+                </form>
             </div>
-            <div class="col-8">
+            <div class="col-10">
                 <form class="text-color mt-3" [formGroup]="actualizarDatosForm" (ngSubmit)="actualizarDatos()">
                     <h5>
                         <i class="bi bi-gear-wide-connected me-2"></i>
