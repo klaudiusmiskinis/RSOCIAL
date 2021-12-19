@@ -60,4 +60,8 @@ export class PerfilComponent implements OnInit {
       this.usuarios.actualizarUsuario(this.logged);
     }
   }
+
+  previsualizar(e) {
+    console.log(e)
+  }
 }
