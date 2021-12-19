@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from '../services/usuarios.service';
 import { Usuario } from '../class/usuario';
 import { Router } from '@angular/router';
@@ -14,6 +14,8 @@ import * as bcrypt from 'bcryptjs';
 export class PerfilComponent implements OnInit {
   public actualizarDatosForm: FormGroup;
   public actualizarPasswordForm: FormGroup;
+  public imageForm: FormGroup;
+  public ruta: string;
   public logged: Usuario;
   public router;
   private usuarios;
@@ -32,6 +34,9 @@ export class PerfilComponent implements OnInit {
     this.actualizarPasswordForm = this.formBuilder.group({
       password: ['', Validators.required],
       passwordRepetir: ['', Validators.required]
+    })
+    this.imageForm = this.formBuilder.group({
+      foto: ['', Validators.required]
     })
   }
 
@@ -62,6 +67,18 @@ export class PerfilComponent implements OnInit {
   }
 
   previsualizar(e) {
-    console.log(e)
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      this.ruta = reader.result as string;
+    }
+    reader.readAsDataURL(file)
+  }
+
+  aplicarFoto() {
+    this.logged.avatar = this.ruta
+    this.ruta = ''
+    this.usuarios.actualizarUsuario(this.logged)
+    this.usuarios = this.usuarios.getUsuarios();
   }
 }
