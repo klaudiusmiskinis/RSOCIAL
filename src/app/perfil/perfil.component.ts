@@ -7,8 +7,7 @@ import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'perfil',
-  templateUrl: './perfil.component.html',
-  styleUrls: ['../app.component.css']
+  templateUrl: './perfil.component.html'
 })
 
 export class PerfilComponent implements OnInit {
