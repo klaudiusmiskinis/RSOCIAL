@@ -3,6 +3,7 @@ import { UsuariosService } from '../services/usuarios.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
+import { Usuario } from '../class/usuario';
 
 @Component({
   selector: 'app-login',
@@ -10,20 +11,24 @@ import * as bcrypt from 'bcryptjs';
 })
 
 export class LoginComponent implements OnInit {
+  /* Atributos */
   public loginForm: FormGroup;
   public router: Router;
-  public submit;
+  public submit: string;
+  public usuario: Usuario;
+  public acceso: Boolean;
   public usuarios;
-  public usuario;
-  public acceso = false;
 
+  /* Constructor */
   constructor(private formBuilder: FormBuilder, router: Router, usuariosService: UsuariosService) {
     this.formBuilder = formBuilder;
     this.usuarios = usuariosService;
     this.router = router;
     this.submit = 'mt-3 shadow-sm text-center btn btn-outline-color disabled'
+    this.acceso = false;
   };
 
+  /* Métodos */
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
         email: ['', Validators.required],
@@ -31,6 +36,7 @@ export class LoginComponent implements OnInit {
       });
   };
 
+   /* validacion | Parametros: void  */
   validacion() {
     let mail = this.loginForm.value.email;
     let pass = this.loginForm.value.password;
@@ -45,6 +51,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+   /* login | Parametros: void  */
   loginSubmit() {
     let data = {
       email: this.loginForm.get('email')?.value,
@@ -69,18 +76,21 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  comprobarEmail(email) {
+  /* comprobarEmail | Parametros: email (string) */
+  comprobarEmail(email: string): Boolean {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
 
-  disableSubmit() {
+  /* disableSubmit | Parametros: void  */
+  disableSubmit(): void {
     if (!this.submit.includes('disabled')) {
       this.submit = this.submit + 'disabled'
     }
   }
 
-  enableSubmit() {
+  /* enableSubmit | Parametros: void  */
+  enableSubmit(): void {
     this.submit = this.submit.split('disabled')[0];
   }
 };
