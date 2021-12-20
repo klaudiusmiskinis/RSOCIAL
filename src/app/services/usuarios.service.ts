@@ -42,6 +42,12 @@ export class UsuariosService {
     this.actualizarUsuario(logged)
   }
 
+  eliminarAmigo(amigoEliminar, usuario) {
+    const logged = this.findUsuarioByEmail(usuario)[0]
+    logged.amigos = logged.amigos.filter(amigo => amigo !== amigoEliminar)
+    this.actualizarUsuario(logged);
+  }
+
   getRolUser(){
     const rolUser: Usuario[] = [];
     this.usuarios.forEach(usuario => {
