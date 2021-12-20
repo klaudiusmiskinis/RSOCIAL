@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../class/usuario';
 import { UsuariosService } from '../services/usuarios.service';
@@ -8,7 +8,6 @@ import { SwiperOptions } from 'swiper';
   selector: 'home',
   templateUrl: './home.component.html'
 })
-
 
 export class HomeComponent implements OnInit {
   /*ATRIBUTOS*/
@@ -21,34 +20,10 @@ export class HomeComponent implements OnInit {
   public amigos: Usuario[];
   public noAgregados: Usuario[];
   public disabled: boolean = false;
-  public configUno: SwiperOptions = {
-    a11y: { enabled: true },
-    direction: 'horizontal',
-    slidesPerView: 1,
-    keyboard: true,
-    mousewheel: true,
-    scrollbar: false,
-    navigation: false,
-    pagination: false,
-    autoplay: {
-      delay: 3000,
-    }
-  };
-  public configDos: SwiperOptions = {
-    a11y: { enabled: true },
-    direction: 'horizontal',
-    slidesPerView: 3,
-    keyboard: true,
-    mousewheel: true,
-    scrollbar: false,
-    navigation: false,
-    pagination: false,
-    autoplay: {
-      delay: 3000,
-    }
-  };
+  public configUno: SwiperOptions;
+  public configDos: SwiperOptions;
 
-  /*CONSTRUCTOR*/
+  /* CONSTRUCTOR */
   constructor(Router: Router, ActivatedRoute: ActivatedRoute, UsuariosService: UsuariosService) {
     this.router = Router;
     if (!localStorage.getItem('user')) this.router.navigate(['/login']);
@@ -58,16 +33,43 @@ export class HomeComponent implements OnInit {
     this.usuarios = this.servicio.getUsuarios();
     this.noAgregados = this.servicio.getNoAgregados(this.logged)
     this.amigos = [];
+    this.configUno = {
+      a11y: { enabled: true },
+      direction: 'horizontal',
+      slidesPerView: 1,
+      keyboard: true,
+      mousewheel: true,
+      scrollbar: false,
+      navigation: false,
+      pagination: false,
+      autoplay: {
+        delay: 3000,
+      }
+    };
+    this.configDos = {
+      a11y: { enabled: true },
+      direction: 'horizontal',
+      slidesPerView: 3,
+      keyboard: true,
+      mousewheel: true,
+      scrollbar: false,
+      navigation: false,
+      pagination: false,
+      autoplay: {
+        delay: 3000,
+      }
+    };
   }
 
-  /*MÉTODOS*/
+  /* MÉTODOS */
   ngOnInit() {
     this.logged.amigos.forEach(amigo => {
       this.amigos.push(this.servicio.findUsuarioByEmail(amigo)[0]);
     })
   }
 
-  public agregarAmigo(email) {
+  /* Agregar amigo | Parametro: email (string) */
+  public agregarAmigo(email: string): void {
     this.servicio.agregarAmigo(email, this.logged.correo)
     this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0]
     this.noAgregados = this.servicio.getNoAgregados(this.logged)
@@ -77,7 +79,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  public eliminarAmigo(email) {
+  /* Eliminar amigo | Parametro: email (string) */
+  public eliminarAmigo(email: string): void {
     this.servicio.eliminarAmigo(email, this.logged.correo)
     this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0]
     this.noAgregados = this.servicio.getNoAgregados(this.logged)
@@ -87,7 +90,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  public swiperAmigos() {
+  /* Slider de la libreria Swiper | Parametro: void */
+  public swiperAmigos(): void {
     this.amigos = []
     this.logged.amigos.forEach(amigo => {
       this.amigos.push(this.servicio.findUsuarioByEmail(amigo)[0]);
