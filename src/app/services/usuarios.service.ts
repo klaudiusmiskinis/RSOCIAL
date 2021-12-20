@@ -7,48 +7,59 @@ import Cuentas from '../json/cuentas.json';
 })
 
 export class UsuariosService {
+  /* Atributos */
   public usuarios: Usuario[];
   public usuariosUser: Usuario[];
 
+  /* Constructor */
   constructor() {
     this.usuarios = Cuentas;
     this.usuariosUser = this.getRolUser();
   }
 
+  /* Métodos */
+  /* getUsuarios | Parametros: void */
   getUsuarios(): Usuario[]{
     return this.usuarios;
   }
 
+  /* findUsuarioByEmail | Parametros: email (string) */
   findUsuarioByEmail(email: string): Usuario[] {
     return this.usuarios.filter(usuario => usuario.correo === email);
   }
 
+  /* addUsuario | Parametros: usuario (Usuario) */
   addUsuario(usuario: Usuario): void {
-    this.usuarios.push(usuario)
+    this.usuarios.push(usuario);
   }
 
-  actualizarUsuario(usuarioCambiar: Usuario) {
+  /* actualizarUsuario | Parametros: usuarioCambiar (Usuario) */
+  actualizarUsuario(usuarioCambiar: Usuario): void {
     this.usuarios = this.usuarios.filter(usuario => usuario !== usuarioCambiar);
-    this.usuarios.push(usuarioCambiar)
+    this.usuarios.push(usuarioCambiar);
   }
 
-  eliminarUsuario(usuarioEliminar: Usuario) {
+  /* eliminarUsuario | Parametros: usuarioEliminar (Usuario) */
+  eliminarUsuario(usuarioEliminar: Usuario): void {
     this.usuarios = this.usuarios.filter(usuario => usuario !== usuarioEliminar);
   }
   
-  agregarAmigo(amigo, usuario) {
-    const logged = this.findUsuarioByEmail(usuario)[0]
+  /* agregarAmigo | Parametros: amigo (string), usuario (string) */
+  agregarAmigo(amigo: string, usuario: string): void {
+    const logged = this.findUsuarioByEmail(usuario)[0];
     logged.amigos.push(amigo)
     this.actualizarUsuario(logged)
   }
 
-  eliminarAmigo(amigoEliminar, usuario) {
-    const logged = this.findUsuarioByEmail(usuario)[0]
+  /* eliminarAmigo | Parametros: amigoEliminar (string), usuario (string) */
+  eliminarAmigo(amigoEliminar: string, usuario: string): void {
+    const logged = this.findUsuarioByEmail(usuario)[0];
     logged.amigos = logged.amigos.filter(amigo => amigo !== amigoEliminar)
     this.actualizarUsuario(logged);
   }
 
-  getRolUser(){
+  /* getRolUser | Parametros: void */
+  getRolUser(): Usuario[]{
     const rolUser: Usuario[] = [];
     this.usuarios.forEach(usuario => {
       if (usuario.rol == 'user') {
@@ -58,7 +69,8 @@ export class UsuariosService {
     return rolUser;
   }
 
-  getNoAgregados(usuarioLogged) {
+  /* getNoAgregados | Parametros: usuariosLogged (Usuario) */
+  getNoAgregados(usuarioLogged: Usuario): Usuario[] {
     const noAgregados: Usuario[] = []
     this.usuarios.forEach(usuario => {
       if (usuario.correo !== usuarioLogged.correo && usuario.rol == usuarioLogged.rol) {
