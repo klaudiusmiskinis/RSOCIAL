@@ -12,6 +12,7 @@ import * as bcrypt from 'bcryptjs';
 })
 
 export class RegisterComponent {
+  /* Atributos */
   public registerForm: FormGroup;
   public checkCross: CheckCross;
   public deshabilitado: string;
@@ -20,6 +21,7 @@ export class RegisterComponent {
   public usuario;
   public error;
 
+  /* Constructor */
   constructor(private formBuilder: FormBuilder, router: Router, usuariosService: UsuariosService) {
     this.formBuilder = formBuilder;
     this.usuarios = usuariosService;
@@ -38,6 +40,7 @@ export class RegisterComponent {
     });
   };
 
+  /* Métodos */
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
         username: ['', Validators.required],
@@ -47,6 +50,7 @@ export class RegisterComponent {
     });
   }
 
+  /* allVerified | Parametros: void */
   allVerified(): void {
     if (this.checkCross.username.texto == '✓' && this.checkCross.email.texto == '✓' && 
     this.checkCross.password.texto == '✓' && this.checkCross.passwordRepetir.texto == '✓') {
@@ -56,17 +60,20 @@ export class RegisterComponent {
     }
   }
   
-  comprobarEmail(email) {
+  /* comprobarEmail | Parametros: username (string) */
+  comprobarEmail(email: string): Boolean {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
   }
 
-  comprobarUsername(username){
+   /* comprobarUsername | Parametros: username (string) */
+  comprobarUsername(username: string): Boolean{
     var usernameRegex = /^[a-zA-Z0-9]+$/;
     return usernameRegex.test(username);
   }
 
-  llamarError(tipo, textoError) {
+  /* llamarError | Parametros: tipo (Boolean), textoError (string) */
+  llamarError(tipo: Boolean, textoError: string): void {
     if (tipo) {
       this.error.texto = textoError;
       this.error.class = 'mt-2 p-2 bg-success text-black rounded';
@@ -77,7 +84,8 @@ export class RegisterComponent {
     this.allVerified();
   }
 
-  validacionUsername() {
+  /* validacionUsername | Parametros: void */
+  validacionUsername(): void {
     let valor = this.registerForm.value.username
     if (valor.length > 3) {
       if(this.comprobarUsername(valor)) {
@@ -94,7 +102,8 @@ export class RegisterComponent {
     this.allVerified();
   }
 
-  validacionEmail() {
+  /* validacionEmail | Parametros: void */
+  validacionEmail(): void {
     let valor = this.registerForm.value.email
       if(this.comprobarEmail(valor)) {
         this.llamarError(true, 'El email es válido');
@@ -106,7 +115,8 @@ export class RegisterComponent {
       this.allVerified();
   }
 
-  validacionPassword() {
+  /* validacionPassword | Parametros: void */
+  validacionPassword(): void {
     let valor = this.registerForm.value.passwordRepetir
     let password = this.registerForm.value.password
     if(valor.length > 3) {
@@ -127,6 +137,7 @@ export class RegisterComponent {
     this.allVerified();
   }
 
+  /* registerSubmit | Parametros: void */
   async registerSubmit() {
     let password = await bcrypt.hashSync(this.registerForm.get('password')?.value, 10)
     this.usuario = new Usuario(this.registerForm.get('username')?.value, this.registerForm.get('username')?.value, this.registerForm.get('email')?.value, 0, './default.jpg', password, 'texto', 'user');
