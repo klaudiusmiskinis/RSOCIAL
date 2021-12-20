@@ -3,9 +3,9 @@
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-
+/* ROOT VARs */
 :root {
-    --dark: #212529;
+    --dark:#212529;
     --dark-hover: #4e4e4e;
     --dark-low: #949393;
     --col-hover: #0a6679;
@@ -13,6 +13,7 @@
     --b: #fff;
     --transicion: .15s ease-in-out,box-shadow .15s ease-in-out;
 }
+
 /* SCROLLBAR */
 ::-webkit-scrollbar {
     width: 4px;
