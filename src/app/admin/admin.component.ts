@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
-import { Usuario } from '../class/usuario';
 import { UsuariosService } from '../services/usuarios.service';
+import { Usuario } from '../class/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -63,12 +63,15 @@ export class AdminComponent {
     }
   }
 
+  /* EventListener Resize */
   @HostListener('window:resize', ['$event'])
-  onResize(event) {
+  /* onResize */
+  onResize(event): void  {
     this.columnaMovida(event);
   }
   
-  campoCambiando(event) {
+  /* campoCambiar | Parametros: evento (obj) */
+  campoCambiando(event): void {
     const selectedRows = this.gridApi.getSelectedRows();
     this.seleccionado = {
       nombre: selectedRows[0].nombre + ' ' + selectedRows[0].apellidos,
@@ -79,6 +82,7 @@ export class AdminComponent {
     this.usuarios = this.servicio.getUsuarios();
   }
 
+  /* seleccionarFila | Parametros: evento (obj) */
   seleccionarFila(event): void {
     const selectedRows = this.gridApi.getSelectedRows();
     this.seleccionado = {
@@ -87,6 +91,7 @@ export class AdminComponent {
     }
   }
 
+  /* eliminarFila | Parametros: void */
   eliminarFila(): void {
     if (this.seleccionado.correo) {
       this.servicio.eliminarUsuario(this.servicio.findUsuarioByEmail(this.seleccionado.correo)[0]);
@@ -94,12 +99,14 @@ export class AdminComponent {
     }
   }
 
+  /* tablaCargada | Parametros: params (obj) */
   tablaCargada(params): void {
     this.gridApi = params.api;
     this.gridApi.setDomLayout('autoHeight');
     this.gridApi.sizeColumnsToFit();
   }
 
+  /* columnaMovida | Parametros: event (obj) */
   columnaMovida(event): void {
     this.gridApi.sizeColumnsToFit();
   }
