@@ -37,10 +37,6 @@ ng -o serve
 * [NPM](https://www.npmjs.com/) - Dependencias
 * [BOOTSTRAP](https://getbootstrap.com/) - Usado para maquetación del Front-End
 
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
 ## Autores ✒️
 
 * **Klaudijus Miskinis** - [Perfil](https://github.com/klaudiusmiskinis)
