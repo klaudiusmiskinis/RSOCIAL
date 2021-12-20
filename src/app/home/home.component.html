@@ -36,7 +36,7 @@
                 <div class="border border-color rounded  m-1" fxLayout="column" fxLayoutAlign="center">
                     <div class="d-flex p-2">
                         <div class="mt-2 me-2">
-                            <img width="20" class="rounded-circle" src="/assets/img/user.png">
+                            <img src="{{ amigo.avatar }}" class="rounded-circle" width="18">
                         </div>
                         <div class="mt-2">{{ amigo.nombre + ' ' + amigo.apellidos }}</div>
                             <div class="ms-auto">
@@ -58,11 +58,11 @@
                         <div class="card bg-transparent border-color text-center m-1">
                             <div class="d-flex p-2">
                                 <div class="mt-1 me-2">
-                                    <img src="{{ usuario.avatar }}" class="rounded-circle" width="20">
+                                    <img src="{{ usuario.avatar }}" class="rounded-circle" width="18">
                                 </div>
                                 <div class="mt-1">{{ usuario.nombre + ' ' + usuario.apellidos }}</div>
                                 <div class="ms-auto">
-                                    <button class="btn btn-sm btn-color" (click)="agregarAmigo(usuario.correo)">Agregar</button>
+                                    <button class="btn btn-sm btn-color" id="liveToastBtn" (click)="agregarAmigo(usuario.correo)">Agregar</button>
                                 </div>
                             </div>
                         </div>
@@ -71,6 +71,5 @@
             </div>
         </div>
     </div>
-
 
 </body>
