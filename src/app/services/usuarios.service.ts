@@ -22,6 +22,10 @@ export class UsuariosService {
   getUsuarios(): Usuario[]{
     return this.usuarios;
   }
+  
+  comprobarEmail(email) {
+    return this.usuarios.filter(usuario => usuario.correo === email);
+  }
 
   /* findUsuarioByEmail | Parametros: email (string) */
   findUsuarioByEmail(email: string): Usuario[] {

@@ -112,6 +112,10 @@ export class RegisterComponent {
         this.llamarError(false, 'El email es inválido');
         this.checkCross.emailNot();
       }
+      if(this.usuarios.comprobarEmail(valor).length > 0) {
+        this.llamarError(false, 'El email existe');
+        this.checkCross.emailNot();
+      }
       this.allVerified();
   }
 
@@ -140,7 +144,7 @@ export class RegisterComponent {
   /* registerSubmit | Parametros: void */
   async registerSubmit() {
     let password = await bcrypt.hashSync(this.registerForm.get('password')?.value, 10)
-    this.usuario = new Usuario(this.registerForm.get('username')?.value, this.registerForm.get('username')?.value, this.registerForm.get('email')?.value, 0, './default.jpg', password, 'texto', 'user');
+    this.usuario = new Usuario(this.registerForm.get('username')?.value, this.registerForm.get('username')?.value, this.registerForm.get('email')?.value, 0, '/assets/img/user.png', password, 'lorem alea iacta est', 'user');
     this.registerForm = new FormGroup({
         username: new FormControl(),
         email: new FormControl(),
