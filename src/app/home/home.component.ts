@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
   /*CONSTRUCTOR*/
   constructor(Router: Router, ActivatedRoute: ActivatedRoute, UsuariosService: UsuariosService) {
     this.router = Router;
+    if (!localStorage.getItem('user')) this.router.navigate(['/login']);
     this.route = ActivatedRoute
     this.servicio = UsuariosService;
     this.logged = this.servicio.findUsuarioByEmail(localStorage.getItem('user'))[0];
@@ -60,17 +61,24 @@ export class HomeComponent implements OnInit {
   }
 
   /*MÉTODOS*/
-  public ngOnInit() {
-    if (!this.logged) this.router.navigate(['login']);
-    else {
-      this.logged.amigos.forEach(amigo => {
-        this.amigos.push(this.servicio.findUsuarioByEmail(amigo)[0]);
-      })
-    }
+  ngOnInit() {
+    this.logged.amigos.forEach(amigo => {
+      this.amigos.push(this.servicio.findUsuarioByEmail(amigo)[0]);
+    })
   }
 
   public agregarAmigo(email) {
     this.servicio.agregarAmigo(email, this.logged.correo)
+    this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0]
+    this.noAgregados = this.servicio.getNoAgregados(this.logged)
+    this.swiperAmigos();
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+      this.router.navigate(['/home']);
+    });
+  }
+
+  eliminarAmigo(email) {
+    this.servicio.eliminarAmigo(email, this.logged.correo)
     this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0]
     this.noAgregados = this.servicio.getNoAgregados(this.logged)
     this.swiperAmigos();

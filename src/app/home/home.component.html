@@ -33,16 +33,14 @@
         <h6 class="text-color"><i class="bi bi-people-fill mx-2"></i>{{ amigos.length }} Amigos</h6>
         <swiper class="swiper-container text-color" fxFlex="auto" [config]="configUno" [disabled]="disabled">
             <div *ngFor="let amigo of amigos" class="swiper-slide">
-                <div class="card bg-transparent border-color text-center">
-                    <div class="card-body" fxLayout="column" fxLayoutAlign="center">
-                        <div class="d-flex">
-                            <div class="col-auto">
-                                <img src="{{ amigo.avatar }}" class="img-fluid rounded-circle shadow-sm" width="50">
-                            </div>
-                            <div class="col">
-                                <p class="card-title">{{ amigo.nombre + ' ' + amigo.apellidos }}</p>
-                                <p class="card-text">{{ amigo.descripcion }}</p>
-                            </div>
+                <div class="border border-color rounded  m-1" fxLayout="column" fxLayoutAlign="center">
+                    <div class="d-flex p-2">
+                        <div class="mt-2 me-2">
+                            <img width="20" class="rounded-circle" src="/assets/img/user.png">
+                        </div>
+                        <div class="mt-2">{{ amigo.nombre + ' ' + amigo.apellidos }}</div>
+                            <div class="ms-auto">
+                            <button class="btn btn-sm btn-danger" (click)="eliminarAmigo(amigo.correo)">Eliminar</button>
                         </div>
                     </div>
                 </div>
@@ -59,12 +57,12 @@
                     <div *ngFor="let usuario of noAgregados" class="swiper-slide">
                         <div class="card bg-transparent border-color text-center m-1">
                             <div class="d-flex p-2">
-                                <div class="mt-1 mx-2">
+                                <div class="mt-1 me-2">
                                     <img src="{{ usuario.avatar }}" class="rounded-circle" width="20">
                                 </div>
                                 <div class="mt-1">{{ usuario.nombre + ' ' + usuario.apellidos }}</div>
                                 <div class="ms-auto">
-                                    <button class="btn btn-color" (click)="agregarAmigo(usuario.correo)">Agregar</button>
+                                    <button class="btn btn-sm btn-color" (click)="agregarAmigo(usuario.correo)">Agregar</button>
                                 </div>
                             </div>
                         </div>
