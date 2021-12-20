@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Usuario } from '../class/usuario';
 import { UsuariosService } from '../services/usuarios.service';
 import { SwiperOptions } from 'swiper';
-
 
 @Component({
   selector: 'home',
@@ -16,9 +15,10 @@ export class HomeComponent implements OnInit {
   public router: Router;
   public route: ActivatedRoute;
   public usuarios: Usuario[];
-  public logged: Usuario;ç
+  public logged: Usuario;
   public servicio;
-  public amigos;
+  public duracion: number;
+  public amigos: Usuario[];
   public noAgregados: Usuario[];
   public disabled: boolean = false;
   public configUno: SwiperOptions = {
@@ -77,7 +77,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  eliminarAmigo(email) {
+  public eliminarAmigo(email) {
     this.servicio.eliminarAmigo(email, this.logged.correo)
     this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0]
     this.noAgregados = this.servicio.getNoAgregados(this.logged)
