@@ -3,7 +3,10 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"]
+      "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"],
+      "crypto": [
+        "node_modules/crypto-js"
+      ]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
