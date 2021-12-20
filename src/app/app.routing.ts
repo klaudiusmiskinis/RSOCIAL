@@ -1,10 +1,11 @@
-import { Routes, RouterModule } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { PerfilComponent } from './perfil/perfil.component';
-import { PrivacidadComponent } from './privacidad/privacidad.component';
-import { RegisterComponent } from './register/register.component';
+
+import { PrivacidadComponent }   from './privacidad/privacidad.component';
+import { RegisterComponent }     from './register/register.component';
+import { PerfilComponent }       from './perfil/perfil.component';
+import { AdminComponent }        from './admin/admin.component';
+import { LoginComponent }        from './login/login.component';
+import { HomeComponent }         from './home/home.component';
+import { Routes, RouterModule }  from '@angular/router';
 
 const routes: Routes = [
     { path: 'politica', component: PrivacidadComponent, pathMatch: 'full'},
