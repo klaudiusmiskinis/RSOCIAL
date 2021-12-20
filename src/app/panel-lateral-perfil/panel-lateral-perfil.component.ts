@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   selector: 'app-panel-lateral-perfil',
   templateUrl: './panel-lateral-perfil.component.html'
 })
+
 export class PanelLateralPerfilComponent {
   /* Atributos */
   public router;
@@ -20,6 +21,7 @@ export class PanelLateralPerfilComponent {
   }
 
   /* Métodos */
+  /* logout | Parametros: void */
   logout(){
     localStorage.clear();
     this.router.navigate(['login']);
