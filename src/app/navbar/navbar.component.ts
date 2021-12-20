@@ -16,6 +16,7 @@ export class NavbarComponent {
   }
 
   /* Métodos */
+  /* logout | Parametros: void */
   logout() {
     localStorage.clear();
     this.router.navigate(['login']);
