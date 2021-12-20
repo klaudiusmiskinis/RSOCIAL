@@ -10,7 +10,7 @@ import { SwiperOptions } from 'swiper';
 })
 
 export class HomeComponent implements OnInit {
-  /*ATRIBUTOS*/
+  /* Atributos */
   public router: Router;
   public route: ActivatedRoute;
   public usuarios: Usuario[];
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   public configUno: SwiperOptions;
   public configDos: SwiperOptions;
 
-  /* CONSTRUCTOR */
+  /* Constructor */
   constructor(Router: Router, ActivatedRoute: ActivatedRoute, UsuariosService: UsuariosService) {
     this.router = Router;
     if (!localStorage.getItem('user')) this.router.navigate(['/login']);
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     this.servicio = UsuariosService;
     this.logged = this.servicio.findUsuarioByEmail(localStorage.getItem('user'))[0];
     this.usuarios = this.servicio.getUsuarios();
-    this.noAgregados = this.servicio.getNoAgregados(this.logged)
+    this.noAgregados = this.servicio.getNoAgregados(this.logged);
     this.amigos = [];
     this.configUno = {
       a11y: { enabled: true },
@@ -61,38 +61,38 @@ export class HomeComponent implements OnInit {
     };
   }
 
-  /* MÉTODOS */
+  /* Métodos */
   ngOnInit() {
     this.logged.amigos.forEach(amigo => {
       this.amigos.push(this.servicio.findUsuarioByEmail(amigo)[0]);
     })
   }
 
-  /* Agregar amigo | Parametro: email (string) */
+  /* agregarAmigo | Parametro: email (string) */
   public agregarAmigo(email: string): void {
-    this.servicio.agregarAmigo(email, this.logged.correo)
-    this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0]
-    this.noAgregados = this.servicio.getNoAgregados(this.logged)
+    this.servicio.agregarAmigo(email, this.logged.correo);
+    this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0];
+    this.noAgregados = this.servicio.getNoAgregados(this.logged);
     this.swiperAmigos();
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
       this.router.navigate(['/home']);
     });
   }
 
-  /* Eliminar amigo | Parametro: email (string) */
+  /* eliminarAmigo | Parametro: email (string) */
   public eliminarAmigo(email: string): void {
-    this.servicio.eliminarAmigo(email, this.logged.correo)
-    this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0]
-    this.noAgregados = this.servicio.getNoAgregados(this.logged)
+    this.servicio.eliminarAmigo(email, this.logged.correo);
+    this.logged = this.servicio.findUsuarioByEmail(this.logged.correo)[0];
+    this.noAgregados = this.servicio.getNoAgregados(this.logged);
     this.swiperAmigos();
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
       this.router.navigate(['/home']);
     });
   }
 
-  /* Slider de la libreria Swiper | Parametro: void */
+  /* swiperAmigos | Parametro: void */
   public swiperAmigos(): void {
-    this.amigos = []
+    this.amigos = [];
     this.logged.amigos.forEach(amigo => {
       this.amigos.push(this.servicio.findUsuarioByEmail(amigo)[0]);
     })
