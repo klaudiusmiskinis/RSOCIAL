@@ -12,6 +12,7 @@ app.get('/*', function(req, res) {
 });
 
 // Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 80);
 app.get("/api/status", function (req, res) {
     res.status(200).json({ status: "UP" });
 });
