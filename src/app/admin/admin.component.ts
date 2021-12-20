@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from '../class/usuario';
 import { UsuariosService } from '../services/usuarios.service';
 
@@ -17,12 +18,16 @@ export class AdminComponent {
   public servicio;
   public columnas;
   public gridApi;
+  public router;
+  public logged;
   public stats;
 
   /* Constructor */
-  constructor(usuariosService: UsuariosService) {
+  constructor(usuariosService: UsuariosService, router: Router) {
     this.servicio = usuariosService;
+    this.router = router;
     this.usuarios = this.servicio.getUsuarios();
+    this.logged = this.servicio.findUsuarioByEmail(localStorage.getItem('user'))[0];
     this.rowSelection = 'single';
     this.columnas = [
       {headerName: 'Nombre', field: 'nombre', sortable: true},
@@ -42,6 +47,7 @@ export class AdminComponent {
 
   /* Métodos */
   ngOnInit(){
+    if (!this.logged) this.router.navigate(['login']);
     let contadorUser = 0;
     let contadorAdmin = 0;
     for (let i = 0; i < this.usuarios.length; i++) {
