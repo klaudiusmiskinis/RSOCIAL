@@ -11,14 +11,16 @@ import * as bcrypt from 'bcryptjs';
 })
 
 export class PerfilComponent implements OnInit {
+  /* Atributos */
   public actualizarDatosForm: FormGroup;
   public actualizarPasswordForm: FormGroup;
   public imageForm: FormGroup;
-  public ruta: string;
   public logged: Usuario;
-  public router;
+  public ruta: string;
   private usuarios;
+  public router;
 
+  /* Constructor */
   constructor(Router: Router, usuariosService: UsuariosService, private formBuilder: FormBuilder) {
     this.formBuilder = formBuilder;
     this.router = Router;
@@ -39,11 +41,13 @@ export class PerfilComponent implements OnInit {
     })
   }
 
+  /* Métodos */
   ngOnInit(): void {
     if (!this.logged) return this.router.navigate(['login']);
   }
 
-  actualizarDatos() {
+  /* actualizarDatos | Parametros: void */
+  actualizarDatos(): void {
     let actualizar = false;
     let nombre = this.actualizarDatosForm.value.nombre
     let apellidos = this.actualizarDatosForm.value.apellidos
@@ -56,6 +60,7 @@ export class PerfilComponent implements OnInit {
     if (actualizar) this.usuarios.actualizarUsuario(this.logged)
   }
 
+  /* actualizarPassword | Parametros: void */
   async actualizarPassword() {
     let password = this.actualizarPasswordForm.value.password;
     let passwordRepetir = this.actualizarPasswordForm.value.passwordRepetir;
@@ -65,8 +70,9 @@ export class PerfilComponent implements OnInit {
     }
   }
 
-  previsualizar(e) {
-    const file = e.target.files[0];
+  /* previsualizar | Parametros: event (obj) */
+  previsualizar(event): void {
+    const file = event.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
       this.ruta = reader.result as string;
@@ -74,7 +80,8 @@ export class PerfilComponent implements OnInit {
     reader.readAsDataURL(file)
   }
 
-  aplicarFoto() {
+   /* previsualizar | Parametros: void */
+  aplicarFoto(): void {
     this.logged.avatar = this.ruta
     this.ruta = ''
     this.usuarios.actualizarUsuario(this.logged)
